@@ -1,0 +1,96 @@
+---
+title: "R Notebook Sentiment Analysis_POLS"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+
+Migrants_Pour_System <- pdf_text("~/R Projects/Migrants_Pour_System.pdf")
+View(Migrants_Pour_System)
+
+```
+
+```{r}
+file_list <- list.files(".", full.names = TRUE, pattern = '.pdf$')
+
+s_pdf_text <- safely(pdf_text) # helps catch errors
+
+walk(file_list, ~{                                     # iterate over the files
+
+  res <- s_pdf_text(.x)                                # try to read it in
+  if (!is.null(res$result)) {                          # if successful
+
+    message(sprintf("Processing [%s]", .x))
+
+    txt_file <- sprintf("%stxt", sub("pdf$", "", .x))  # make a new filename
+
+    unlist(res$result) %>%                             # cld be > 1 pg (which makes a list)
+      tolower() %>%                                    
+      paste0(collapse="\n") %>%                        # make one big text block with line breaks
+      cat(file=txt_file)                               # write it out
+
+  } else {                                             # if not successful
+    message(sprintf("Failure converting [%s]", .x))    # show a message
+  }
+
+})
+```
+```{r}
+
+```
+
+```{r}
+my_corpus <- Corpus(DirSource("~/R Projects/Senti_POLS_R", pattern = ".pdf"), 
+                               readerControl = list(reader = readPDF))
+```
+
+
+
+```{r}
+
+Migrants_PS.tdm <- DocumentTermMatrix(my_corpus, 
+                                   control = 
+                                     list(removePunctuation = TRUE,
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+
+```
+
+
+
+```{r}
+findMostFreqTerms(Migrants_PS.tdm)
+```
+```{r}
+
+sentiment_score<- (analyzeSentiment(my_corpus)$SentimentQDAP)
+```
+
+```{r}
+SdataFrame<-as.data.frame(sentiment_score)
+```
+
+
+
+```{r}
+response <- c(+1, -1, -1)
+
+compareToResponse(SdataFrame,response)
+```
+
+
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
