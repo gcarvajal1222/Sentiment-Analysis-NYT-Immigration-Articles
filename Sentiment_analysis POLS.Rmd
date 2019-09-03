@@ -7,13 +7,14 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
-```{r}
+packages needed:
+tm
+qdap
+SentimentAnalysis
+SnowballC
+NLP
 
-Migrants_Pour_System <- pdf_text("~/R Projects/Migrants_Pour_System.pdf")
-View(Migrants_Pour_System)
-
-```
-
+Converting pdf into text files and putting it back on the same folder
 ```{r}
 file_list <- list.files(".", full.names = TRUE, pattern = '.pdf$')
 
@@ -39,20 +40,28 @@ walk(file_list, ~{                                     # iterate over the files
 
 })
 ```
-```{r}
 
-```
-
+Reading the pdf files for sentiment analysis pdf style
 ```{r}
-my_corpus <- Corpus(DirSource("~/R Projects/Senti_POLS_R", pattern = ".pdf"), 
+my_corpus <- Corpus(DirSource("~/Project SANY/Sentiment Analysis R bagel", pattern = ".pdf"), 
                                readerControl = list(reader = readPDF))
 ```
 
 
+Reading text files; possibly newspapers from text files
+```{r}
+my_corpus <- Corpus(DirSource("~/Project SANY/Sentiment Analysis R bagel", pattern = ".txt"), 
+                               readerControl = list(reader = readPlain))
 
+```
+
+
+Converting each newspaper into a DTM in order to organize it and remove unwanted things such as punctuation, stopwords, lower everything and remove numbers
+
+Maybe change this to Term Document Matrix?
 ```{r}
 
-Migrants_PS.tdm <- DocumentTermMatrix(my_corpus, 
+NYTNewspapers.tdm <- DocumentTermMatrix(my_corpus, 
                                    control = 
                                      list(removePunctuation = TRUE,
                                           stopwords = TRUE,
@@ -65,11 +74,22 @@ Migrants_PS.tdm <- DocumentTermMatrix(my_corpus,
 
 
 ```{r}
-findMostFreqTerms(Migrants_PS.tdm)
+findMostFreqTerms(NYTNewspapers.tdm)
 ```
+
+Counts of words for each document
+```{r}
+rowSums(as.matrix(NYTNewspapers.tdm))
+```
+
+Sentiment Analysis using QDAP
 ```{r}
 
-sentiment_score<- (analyzeSentiment(my_corpus)$SentimentQDAP)
+sentiment_scoreQDAP<- (analyzeSentiment(my_corpus)$SentimentQDAP)
+
+sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP)
+
+sentiment_scoreQDAP_DF$id <- c(1,2,3)
 ```
 
 ```{r}
@@ -77,15 +97,142 @@ SdataFrame<-as.data.frame(sentiment_score)
 ```
 
 
-
+Use this if you want to do InterCoder Reliablity
 ```{r}
 response <- c(+1, -1, -1)
 
 compareToResponse(SdataFrame,response)
 ```
 
+Make the dicctionary availbale in R for GI (example)
+```{r}
+data(DictionaryGI)
+data(DictionaryQDAP)
+```
+
+Display dicctionary QDAP
+```{r}
+Dictionary_GI<-as.data.frame(str(Dictionary))
+```
+
+```{r}
+# Access dictionary as an object of type SentimentDictionary
+dict.GI <- loadDictionaryGI()
+# Print summary statistics of dictionary
+summary(dict.GI)
+```
+
+Do sentiment analysis on corpus with Dictionary LM
+
+```{r}
+sentiment_scoreLM<- analyzeSentiment(my_corpus,
+                              rules=list("SentimentLM"=list(ruleSentiment, loadDictionaryLM())))
+
+sentiment_scoreLM$id <- c(1,2,3)
+
+```
+
+Do sentiment analysis on corpus with Dictionary GI
+
+```{r}
+sentiment_scoreGI<- analyzeSentiment(my_corpus,
+                              rules=list("SentimentGI"=list(ruleSentiment, loadDictionaryGI())))
+
+sentiment_scoreGI$id <- c(1,2,3)
+
+```
 
 
+
+Extracting the names of each newspaper from the folder
+```{r}
+Newspaper_names =  c(list.files(".", full.names = TRUE, pattern = '.txt$'))
+Newspaper_names_DF<-as.data.frame(Newspaper_names)
+
+Newspaper_names_DF$id <- c(1,2,3)
+
+```
+
+Combining the dataframes with the names and the different scores of each dictionary analysis 
+
+```{r}
+Merged_DF_Two = merge(Newspaper_names_DF,sentiment_scoreGI, by.x=c("id"))
+Merged_DF_Three = merge(Merged_DF_Two,sentiment_scoreLM, by.x=c("id"))
+Merged_DF_Four = merge(Merged_DF_Three,sentiment_scoreQDAP_DF, by.x=c("id"))
+```
+
+
+Count words in the Corpus
+
+```{r}
+countWords(my_corpus)
+```
+
+Sentiment score defined as the difference between positive and negative word counts divided by the
+total number of words.
+
+Given the number of positive words P and the number of negative words N. Further, let T denote
+the total number of words in that document. Then, the sentiment ratio is defined as  P − N/T
+
+```{r}
+ruleSentiment(NYTNewspapers.tdm, loadDictionaryLM())
+
+```
+
+Analyze most common words in the Document doing TERMDOCMATRIX with Stemming.
+
+```{r}
+NYTNewspapers.tdm2 <- TermDocumentMatrix(my_corpus, 
+                                   control = 
+                                     list(
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+                                          stemDocument = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+```
+
+```{r}
+NYTNewspaper_m<- as.matrix(NYTNewspapers.tdm2)
+
+# Calculate the row sums of coffee_m
+term_frequency <- rowSums(NYTNewspaper_m)
+
+# Sort term_frequency in decreasing order
+term_frequency <- sort(term_frequency, decreasing = TRUE)
+
+# View the top 10 most common words
+term_frequency[1:100]
+
+# Plot a barchart of the 10 most common words
+barplot(term_frequency[30:40], col = "tan", las = 2)
+```
+```{r}
+sentiment_scoreQDAPTDM<- (analyzeSentiment(NYTNewspapers.tdm2)$SentimentQDAP)
+
+sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP)
+```
+
+Sentiment Analysis with GI with stemming
+
+```{r}
+sentiment_scoreGI_Stemming<- analyzeSentiment(NYTNewspapers.tdm2,
+                              rules=list("SentimentGI"=list(ruleSentiment, loadDictionaryGI())))
+
+sentiment_scoreGI_Stemming$id <- c(1,2,3)
+```
+
+
+merging into dataframe with stemming
+```{r}
+Merged_GIStemming = merge(Newspaper_names_DF,sentiment_scoreGI_Stemming,by.x=c("id") )
+```
+
+
+
+```{r}
+ruleRatio(NYTNewspapers.tdm2, loadDictionaryGI())
+```
 
 
 
