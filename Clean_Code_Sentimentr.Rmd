@@ -1,0 +1,71 @@
+---
+title: "Clean Code SentimentR with API extraction of first paragraph"
+output: html_notebook
+---
+
+
+#Loading Nessesary libraries for sentiment Analysis
+```{r}
+library(sentimentr)
+library(qdap)
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+```
+
+#Creating API varible and creating a dataframe in order to paste it 
+```{r}
+NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
+x <- fromJSON("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&api-key=a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5", flatten = TRUE) %>% data.frame()
+```
+
+#creating the query nessesary to extract wanted information
+
+#Professor Johnson still has to give me the list 
+
+#Doesn't seem like we can do "and" "or" for the specific query, something that academic search complete and pro quest are able to do
+
+#Just do it for one month 2012/01/01 - 2012/02/01
+```{r}
+# Let's set some parameters
+term <- "immigration+latino+hispanic" # Need to use + to string together separate words
+begin_date <- "20120101"
+end_date <- "20120201"
+```
+
+#Searching for the terms that we query above and essentially creating the query object in order to use it for the API
+```{r}
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term,
+                  "&begin_date=",begin_date,"&end_date=",end_date,
+                  "&facet_filter=true&api-key=",NYTIMES_KEY, sep="")
+```
+
+
+#Returning a Json object and calculating the max pages from the query, there is a max of 10 objects (newspaper articles) per page
+```{r}
+initialQuery <- fromJSON(baseurl)
+maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1) 
+```
+
+#from the maxpages we are pasting the baseurl and retriving the information and putting it in a dataframe
+
+#Putting the system to sleep in order to 'trick' the computer for the amount of requests made per minute
+
+#How to use sleep function to retrive the 77 pages in the sphere of immigration and Latinos, maybe add "In the US"?
+```{r}
+pages <- list()
+for(i in 0:maxPages){
+  nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
+  message("Retrieving page ", i)
+  pages[[i+1]] <- nytSearch 
+  Sys.sleep(1) 
+}
+```
+
+
+#binding the pages together and creating the final dataframe. 
+```{r}
+allNYTSearch <- rbind_pages(pages)
+```
+
+
