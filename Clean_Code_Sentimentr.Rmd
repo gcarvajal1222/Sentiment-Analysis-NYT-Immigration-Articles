@@ -11,12 +11,15 @@ library(qdap)
 library(jsonlite)
 library(dplyr)
 library(ggplot2)
+library(tm)
+library(tidyverse)
+library(SentimentAnalysis)
+library(quanteda)
 ```
 
-#Creating API varible and creating a dataframe in order to paste it 
+#Creating API varible for "Article Search API FORMAT"
 ```{r}
 NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
-x <- fromJSON("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&api-key=a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5", flatten = TRUE) %>% data.frame()
 ```
 
 #creating the query nessesary to extract wanted information
@@ -67,5 +70,94 @@ for(i in 0:maxPages){
 ```{r}
 allNYTSearch <- rbind_pages(pages)
 ```
+
+#creating a dataframe that are only "news": Function part
+```{r}
+funct_remove_rows<- function(dataFrame,col_dataframe){
+not_news_variable <- c("Op-Ed","Editorial")
+allNYTSearch_OnlyNews<<-dataFrame[!grepl(paste(not_news_variable, collapse="|"), col_dataframe),]
+return(allNYTSearch_OnlyNews)
+}
+```
+
+#calling the function on the specific column of allNYTSearch and removing Co-ed and editorials
+
+```{r}
+funct_remove_rows(allNYTSearch,allNYTSearch$response.docs.type_of_material)
+```
+
+#Getting rid of white spaces
+#verify that this is right
+```{r}
+allNYTSearch_OnlyNews$response.docs.lead_paragraph <-(str_squish(allNYTSearch_OnlyNews$response.docs.lead_paragraph))
+```
+
+#Add Id variable to the NYTSearch_OnlyNews 
+```{r}
+allNYTSearch_OnlyNews$id <- seq.int(nrow(allNYTSearch_OnlyNews))
+```
+
+#Trying to extract specific document in the term document matrix
+# DOESNT WORK
+```{r}
+myReader <- DataframeSource(mapping=list(content=allNYTSearch_OnlyNews$response.docs.lead_paragraph ,id= allNYTSearch_OnlyNews$id))
+tm_try <- VCorpus(DataframeSource(dd), readerControl=list(reader=myReader))
+```
+
+
+
+#Convert datarame into term document matrix from the allNYTSearch_onlyNews
+```{r}
+myCorpus <- Corpus(VectorSource(allNYTSearch_OnlyNews$response.docs.lead_paragraph))
+dtm_NYTArticles <-  DocumentTermMatrix(myCorpus, 
+                                   control = 
+                                     list(removePunctuation = TRUE,
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+```
+
+
+
+
+
+
+#tidy format sentiment analysis
+```{r}
+library(dplyr)
+library(tidytext)
+ap_td <- tidy(dtm_NYTArticles)
+```
+
+#Sentiment from the tdm created above
+```{r}
+ap_sentiments <- ap_td %>%
+  inner_join(get_sentiments("bing"), by = c(term = "word"))
+```
+#Sentiment from SentimentAnalysis package with LM dicctionary
+
+```{r}
+sentiment_scoreLM_cleancode<- analyzeSentiment(dtm_NYTArticles,
+                              rules=list("SentimentLM"=list(ruleSentiment, loadDictionaryLM())))
+```
+#Sentiment from SentimentAnalysis package with GI dicctionary
+
+
+```{r}
+sentiment_scoreGI_cleancode<- analyzeSentiment(dtm_NYTArticles,
+                              rules=list("SentimentGI"=list(ruleSentiment, loadDictionaryGI())))
+
+
+```
+
+#Sentiment from SentimentAnalysis package from qdap dicctionary
+
+```{r}
+sentiment_scoreQDAP_cleancode<- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP)
+sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)
+```
+
+
 
 

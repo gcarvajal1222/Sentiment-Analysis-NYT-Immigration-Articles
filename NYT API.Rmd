@@ -9,10 +9,11 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 
 
 
-Packages neeeded:
+call Packages neeeded:
 
 jsonlite
 dplyr
+ggplot
 
 ```{r}
 NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
@@ -57,7 +58,7 @@ for(i in 0:maxPages){
 allNYTSearch <- rbind_pages(pages)
 ```
 
-
+#
 ```{r}
 # Visualize coverage by section
 allNYTSearch %>% 
