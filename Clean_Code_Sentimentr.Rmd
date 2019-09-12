@@ -24,7 +24,7 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 
 #creating the query nessesary to extract wanted information
 
-#Professor Johnson still has to give me the list 
+#Professor Johnson still has to give me the list of words nessesary for query 
 
 #Doesn't seem like we can do "and" "or" for the specific query, something that academic search complete and pro quest are able to do
 
@@ -130,7 +130,7 @@ library(tidytext)
 ap_td <- tidy(dtm_NYTArticles)
 ```
 
-#Sentiment from the tdm created above
+#Sentiment from the tdm created above with tidyverse
 ```{r}
 ap_sentiments <- ap_td %>%
   inner_join(get_sentiments("bing"), by = c(term = "word"))
@@ -158,6 +158,9 @@ sentiment_scoreQDAP_cleancode<- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP
 sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)
 ```
 
-
+#convert R markdown to R script
+```{r}
+knitr::purl("Clean_Code_Sentimentr.Rmd", "Script_Clean_Code_Sentiment", documentation = 2)
+```
 
 
