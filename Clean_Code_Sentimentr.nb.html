@@ -1770,25 +1770,19 @@ $(document).ready(function () {
 <p>#Loading Nessesary libraries for sentiment Analysis</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzZW50aW1lbnRyKVxubGlicmFyeShxZGFwKVxubGlicmFyeShqc29ubGl0ZSlcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KHRtKVxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KFNlbnRpbWVudEFuYWx5c2lzKVxubGlicmFyeShxdWFudGVkYSlcbmBgYCJ9 -->
-<pre class="r"><code>library(sentimentr)
-library(qdap)
-library(jsonlite)
-library(dplyr)
-library(ggplot2)
-library(tm)
-library(tidyverse)
-library(SentimentAnalysis)
-library(quanteda)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShzZW50aW1lbnRyKVxubGlicmFyeShxZGFwKVxubGlicmFyeShqc29ubGl0ZSlcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KHRtKVxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KFNlbnRpbWVudEFuYWx5c2lzKVxubGlicmFyeShxdWFudGVkYSlcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r library(sentimentr) library(qdap) library(jsonlite) library(dplyr) library(ggplot2) library(tm) library(tidyverse) library(SentimentAnalysis) library(quanteda)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Creating API varible for “Article Search API FORMAT”</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTllUSU1FU19LRVk9XCJhMEhBM3VCSVNEa0d5dlVHUjNGZW9BR3lidERWUFBNNVwiXG54IDwtIGZyb21KU09OKFwiaHR0cDovL2FwaS5ueXRpbWVzLmNvbS9zdmMvc2VhcmNoL3YyL2FydGljbGVzZWFyY2guanNvbj9xPW11ZWxsZXImYXBpLWtleT1hMEhBM3VCSVNEa0d5dlVHUjNGZW9BR3lidERWUFBNNVwiLCBmbGF0dGVuID0gVFJVRSkgJT4lIGRhdGEuZnJhbWUoKVxuYGBgIn0= -->
-<pre class="r"><code>NYTIMES_KEY=&quot;a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5&quot;
-x &lt;- fromJSON(&quot;http://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&amp;api-key=a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5&quot;, flatten = TRUE) %&gt;% data.frame()</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuTllUSU1FU19LRVk9XFxhMEhBM3VCSVNEa0d5dlVHUjNGZW9BR3lidERWUFBNNVxcXG54IDwtIGZyb21KU09OKFxcaHR0cDovL2FwaS5ueXRpbWVzLmNvbS9zdmMvc2VhcmNoL3YyL2FydGljbGVzZWFyY2guanNvbj9xPW11ZWxsZXImYXBpLWtleT1hMEhBM3VCSVNEa0d5dlVHUjNGZW9BR3lidERWUFBNNVxcLCBmbGF0dGVuID0gVFJVRSkgJT4lIGRhdGEuZnJhbWUoKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r NYTIMES_KEY=0HA3uBISDkGyvUGR3FeoAGybtDVPPM5<br />
+x &lt;- fromJSON(://api.nytimes.com/svc/search/v2/articlesearch.json?q=mueller&amp;api-key=a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5, flatten = TRUE) %&gt;% data.frame()</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1798,30 +1792,29 @@ x &lt;- fromJSON(&quot;http://api.nytimes.com/svc/search/v2/articlesearch.json?q
 <p>#Just do it for one month 2012/01/01 - 2012/02/01</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBMZXQncyBzZXQgc29tZSBwYXJhbWV0ZXJzXG50ZXJtIDwtIFwiaW1taWdyYXRpb24rbGF0aW5vK2hpc3BhbmljXCIgIyBOZWVkIHRvIHVzZSArIHRvIHN0cmluZyB0b2dldGhlciBzZXBhcmF0ZSB3b3Jkc1xuYmVnaW5fZGF0ZSA8LSBcIjIwMTIwMTAxXCJcbmVuZF9kYXRlIDwtIFwiMjAxMjAyMDFcIlxuYGBgIn0= -->
-<pre class="r"><code># Let's set some parameters
-term &lt;- &quot;immigration+latino+hispanic&quot; # Need to use + to string together separate words
-begin_date &lt;- &quot;20120101&quot;
-end_date &lt;- &quot;20120201&quot;</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBMZXQncyBzZXQgc29tZSBwYXJhbWV0ZXJzXG50ZXJtIDwtIFxcaW1taWdyYXRpb24rbGF0aW5vK2hpc3BhbmljXFwgIyBOZWVkIHRvIHVzZSArIHRvIHN0cmluZyB0b2dldGhlciBzZXBhcmF0ZSB3b3Jkc1xuYmVnaW5fZGF0ZSA8LSBcXDIwMTIwMTAxXFxcbmVuZF9kYXRlIDwtIFxcMjAxMjAyMDFcXFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r # Let’s set some parameters term &lt;- +latino+hispanic # Need to use + to string together separate words begin_date &lt;- \20120101<br />
+end_date &lt;- \20120201<br />
+</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Searching for the terms that we query above and essentially creating the query object in order to use it for the API</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYmFzZXVybCA8LSBwYXN0ZTAoXCJodHRwOi8vYXBpLm55dGltZXMuY29tL3N2Yy9zZWFyY2gvdjIvYXJ0aWNsZXNlYXJjaC5qc29uP3E9XCIsdGVybSxcbiAgICAgICAgICAgICAgICAgIFwiJmJlZ2luX2RhdGU9XCIsYmVnaW5fZGF0ZSxcIiZlbmRfZGF0ZT1cIixlbmRfZGF0ZSxcbiAgICAgICAgICAgICAgICAgIFwiJmZhY2V0X2ZpbHRlcj10cnVlJmFwaS1rZXk9XCIsTllUSU1FU19LRVksIHNlcD1cIlwiKVxuYGBgIn0= -->
-<pre class="r"><code>baseurl &lt;- paste0(&quot;http://api.nytimes.com/svc/search/v2/articlesearch.json?q=&quot;,term,
-                  &quot;&amp;begin_date=&quot;,begin_date,&quot;&amp;end_date=&quot;,end_date,
-                  &quot;&amp;facet_filter=true&amp;api-key=&quot;,NYTIMES_KEY, sep=&quot;&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYmFzZXVybCA8LSBwYXN0ZTAoXFxodHRwOi8vYXBpLm55dGltZXMuY29tL3N2Yy9zZWFyY2gvdjIvYXJ0aWNsZXNlYXJjaC5qc29uP3E9XFwsdGVybSxcbiAgICAgICAgICAgICAgICAgIFxcJmJlZ2luX2RhdGU9XFwsYmVnaW5fZGF0ZSxcXCZlbmRfZGF0ZT1cXCxlbmRfZGF0ZSxcbiAgICAgICAgICAgICAgICAgIFxcJmZhY2V0X2ZpbHRlcj10cnVlJmFwaS1rZXk9XFwsTllUSU1FU19LRVksIHNlcD1cXFxcKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r baseurl &lt;- paste0(://api.nytimes.com/svc/search/v2/articlesearch.json?q=,term, &amp;begin_date=,begin_date,&amp;end_date=,end_date, &amp;facet_filter=true&amp;api-key=,NYTIMES_KEY, sep=\)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Returning a Json object and calculating the max pages from the query, there is a max of 10 objects (newspaper articles) per page</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5pdGlhbFF1ZXJ5IDwtIGZyb21KU09OKGJhc2V1cmwpXG5tYXhQYWdlcyA8LSByb3VuZCgoaW5pdGlhbFF1ZXJ5JHJlc3BvbnNlJG1ldGEkaGl0c1sxXSAvIDEwKS0xKSBcbmBgYCJ9 -->
-<pre class="r"><code>initialQuery &lt;- fromJSON(baseurl)
-maxPages &lt;- round((initialQuery$response$meta$hits[1] / 10)-1) </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuaW5pdGlhbFF1ZXJ5IDwtIGZyb21KU09OKGJhc2V1cmwpXG5tYXhQYWdlcyA8LSByb3VuZCgoaW5pdGlhbFF1ZXJ5JHJlc3BvbnNlJG1ldGEkaGl0c1sxXSAvIDEwKS0xKSBcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r initialQuery &lt;- fromJSON(baseurl) maxPages &lt;- round((initialQuery<span class="math inline">\(response\)</span>meta$hits[1] / 10)-1)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1830,128 +1823,118 @@ maxPages &lt;- round((initialQuery$response$meta$hits[1] / 10)-1) </code></pre>
 <p>#How to use sleep function to retrive the 77 pages in the sphere of immigration and Latinos, maybe add “In the US”?</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGFnZXMgPC0gbGlzdCgpXG5mb3IoaSBpbiAwOm1heFBhZ2VzKXtcbiAgbnl0U2VhcmNoIDwtIGZyb21KU09OKHBhc3RlMChiYXNldXJsLCBcIiZwYWdlPVwiLCBpKSwgZmxhdHRlbiA9IFRSVUUpICU+JSBkYXRhLmZyYW1lKCkgXG4gIG1lc3NhZ2UoXCJSZXRyaWV2aW5nIHBhZ2UgXCIsIGkpXG4gIHBhZ2VzW1tpKzFdXSA8LSBueXRTZWFyY2ggXG4gIFN5cy5zbGVlcCgxKSBcbn1cbmBgYCJ9 -->
-<pre class="r"><code>pages &lt;- list()
-for(i in 0:maxPages){
-  nytSearch &lt;- fromJSON(paste0(baseurl, &quot;&amp;page=&quot;, i), flatten = TRUE) %&gt;% data.frame() 
-  message(&quot;Retrieving page &quot;, i)
-  pages[[i+1]] &lt;- nytSearch 
-  Sys.sleep(1) 
-}</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxucGFnZXMgPC0gbGlzdCgpXG5mb3IoaSBpbiAwOm1heFBhZ2VzKXtcbiAgbnl0U2VhcmNoIDwtIGZyb21KU09OKHBhc3RlMChiYXNldXJsLCBcXCZwYWdlPVxcLCBpKSwgZmxhdHRlbiA9IFRSVUUpICU+JSBkYXRhLmZyYW1lKCkgXG4gIG1lc3NhZ2UoXFxSZXRyaWV2aW5nIHBhZ2UgXFwsIGkpXG4gIHBhZ2VzW1tpKzFdXSA8LSBueXRTZWFyY2ggXG4gIFN5cy5zbGVlcCgxKSBcbn1cbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r pages &lt;- list() for(i in 0:maxPages){ nytSearch &lt;- fromJSON(paste0(baseurl, &amp;page=, i), flatten = TRUE) %&gt;% data.frame() message(page , i) pages[[i+1]] &lt;- nytSearch Sys.sleep(1) }</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#binding the pages together and creating the final dataframe.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxsTllUU2VhcmNoIDwtIHJiaW5kX3BhZ2VzKHBhZ2VzKVxuYGBgIn0= -->
-<pre class="r"><code>allNYTSearch &lt;- rbind_pages(pages)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYWxsTllUU2VhcmNoIDwtIHJiaW5kX3BhZ2VzKHBhZ2VzKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r allNYTSearch &lt;- rbind_pages(pages)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#creating a dataframe that are only “news”: Function part</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuY3RfcmVtb3ZlX3Jvd3M8LSBmdW5jdGlvbihkYXRhRnJhbWUsY29sX2RhdGFmcmFtZSl7XG5ub3RfbmV3c192YXJpYWJsZSA8LSBjKFwiT3AtRWRcIixcIkVkaXRvcmlhbFwiKVxuYWxsTllUU2VhcmNoX09ubHlOZXdzPDwtZGF0YUZyYW1lWyFncmVwbChwYXN0ZShub3RfbmV3c192YXJpYWJsZSwgY29sbGFwc2U9XCJ8XCIpLCBjb2xfZGF0YWZyYW1lKSxdXG5yZXR1cm4oYWxsTllUU2VhcmNoX09ubHlOZXdzKVxufVxuYGBgIn0= -->
-<pre class="r"><code>funct_remove_rows&lt;- function(dataFrame,col_dataframe){
-not_news_variable &lt;- c(&quot;Op-Ed&quot;,&quot;Editorial&quot;)
-allNYTSearch_OnlyNews&lt;&lt;-dataFrame[!grepl(paste(not_news_variable, collapse=&quot;|&quot;), col_dataframe),]
-return(allNYTSearch_OnlyNews)
-}</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZnVuY3RfcmVtb3ZlX3Jvd3M8LSBmdW5jdGlvbihkYXRhRnJhbWUsY29sX2RhdGFmcmFtZSl7XG5ub3RfbmV3c192YXJpYWJsZSA8LSBjKFxcT3AtRWRcXCxcXEVkaXRvcmlhbFxcKVxuYWxsTllUU2VhcmNoX09ubHlOZXdzPDwtZGF0YUZyYW1lWyFncmVwbChwYXN0ZShub3RfbmV3c192YXJpYWJsZSwgY29sbGFwc2U9XFx8XFwpLCBjb2xfZGF0YWZyYW1lKSxdXG5yZXR1cm4oYWxsTllUU2VhcmNoX09ubHlOZXdzKVxufVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r funct_remove_rows&lt;- function(dataFrame,col_dataframe){ not_news_variable &lt;- c(-Ed,) allNYTSearch_OnlyNews&lt;&lt;-dataFrame[!grepl(paste(not_news_variable, collapse=|), col_dataframe),] return(allNYTSearch_OnlyNews) }</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#calling the function on the specific column of allNYTSearch and removing Co-ed and editorials</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuY3RfcmVtb3ZlX3Jvd3MoYWxsTllUU2VhcmNoLGFsbE5ZVFNlYXJjaCRyZXNwb25zZS5kb2NzLnR5cGVfb2ZfbWF0ZXJpYWwpXG5gYGAifQ== -->
-<pre class="r"><code>funct_remove_rows(allNYTSearch,allNYTSearch$response.docs.type_of_material)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZnVuY3RfcmVtb3ZlX3Jvd3MoYWxsTllUU2VhcmNoLGFsbE5ZVFNlYXJjaCRyZXNwb25zZS5kb2NzLnR5cGVfb2ZfbWF0ZXJpYWwpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r funct_remove_rows(allNYTSearch,allNYTSearch$response.docs.type_of_material)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Getting rid of white spaces #verify that this is right</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxsTllUU2VhcmNoX09ubHlOZXdzJHJlc3BvbnNlLmRvY3MubGVhZF9wYXJhZ3JhcGggPC0oc3RyX3NxdWlzaChhbGxOWVRTZWFyY2hfT25seU5ld3MkcmVzcG9uc2UuZG9jcy5sZWFkX3BhcmFncmFwaCkpXG5gYGAifQ== -->
-<pre class="r"><code>allNYTSearch_OnlyNews$response.docs.lead_paragraph &lt;-(str_squish(allNYTSearch_OnlyNews$response.docs.lead_paragraph))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYWxsTllUU2VhcmNoX09ubHlOZXdzJHJlc3BvbnNlLmRvY3MubGVhZF9wYXJhZ3JhcGggPC0oc3RyX3NxdWlzaChhbGxOWVRTZWFyY2hfT25seU5ld3MkcmVzcG9uc2UuZG9jcy5sZWFkX3BhcmFncmFwaCkpXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r allNYTSearch_OnlyNews<span class="math inline">\(response.docs.lead_paragraph &lt;-(str_squish(allNYTSearch_OnlyNews\)</span>response.docs.lead_paragraph))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Add Id variable to the NYTSearch_OnlyNews</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWxsTllUU2VhcmNoX09ubHlOZXdzJGlkIDwtIHNlcS5pbnQobnJvdyhhbGxOWVRTZWFyY2hfT25seU5ld3MpKVxuYGBgIn0= -->
-<pre class="r"><code>allNYTSearch_OnlyNews$id &lt;- seq.int(nrow(allNYTSearch_OnlyNews))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYWxsTllUU2VhcmNoX09ubHlOZXdzJGlkIDwtIHNlcS5pbnQobnJvdyhhbGxOWVRTZWFyY2hfT25seU5ld3MpKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r allNYTSearch_OnlyNews$id &lt;- seq.int(nrow(allNYTSearch_OnlyNews))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Trying to extract specific document in the term document matrix # DOESNT WORK</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlSZWFkZXIgPC0gRGF0YWZyYW1lU291cmNlKG1hcHBpbmc9bGlzdChjb250ZW50PWFsbE5ZVFNlYXJjaF9Pbmx5TmV3cyRyZXNwb25zZS5kb2NzLmxlYWRfcGFyYWdyYXBoICxpZD0gYWxsTllUU2VhcmNoX09ubHlOZXdzJGlkKSlcbnRtX3RyeSA8LSBWQ29ycHVzKERhdGFmcmFtZVNvdXJjZShkZCksIHJlYWRlckNvbnRyb2w9bGlzdChyZWFkZXI9bXlSZWFkZXIpKVxuYGBgIn0= -->
-<pre class="r"><code>myReader &lt;- DataframeSource(mapping=list(content=allNYTSearch_OnlyNews$response.docs.lead_paragraph ,id= allNYTSearch_OnlyNews$id))
-tm_try &lt;- VCorpus(DataframeSource(dd), readerControl=list(reader=myReader))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlSZWFkZXIgPC0gRGF0YWZyYW1lU291cmNlKG1hcHBpbmc9bGlzdChjb250ZW50PWFsbE5ZVFNlYXJjaF9Pbmx5TmV3cyRyZXNwb25zZS5kb2NzLmxlYWRfcGFyYWdyYXBoICxpZD0gYWxsTllUU2VhcmNoX09ubHlOZXdzJGlkKSlcbnRtX3RyeSA8LSBWQ29ycHVzKERhdGFmcmFtZVNvdXJjZShkZCksIHJlYWRlckNvbnRyb2w9bGlzdChyZWFkZXI9bXlSZWFkZXIpKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r myReader &lt;- DataframeSource(mapping=list(content=allNYTSearch_OnlyNews<span class="math inline">\(response.docs.lead_paragraph ,id= allNYTSearch_OnlyNews\)</span>id)) tm_try &lt;- VCorpus(DataframeSource(dd), readerControl=list(reader=myReader))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Convert datarame into term document matrix from the allNYTSearch_onlyNews</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXlDb3JwdXMgPC0gQ29ycHVzKFZlY3RvclNvdXJjZShhbGxOWVRTZWFyY2hfT25seU5ld3MkcmVzcG9uc2UuZG9jcy5sZWFkX3BhcmFncmFwaCkpXG5kdG1fTllUQXJ0aWNsZXMgPC0gIERvY3VtZW50VGVybU1hdHJpeChteUNvcnB1cywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRyb2wgPSBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsaXN0KHJlbW92ZVB1bmN0dWF0aW9uID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0b3B3b3JkcyA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0b2xvd2VyID0gVFJVRSxcbiAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZW1vdmVOdW1iZXJzID0gVFJVRSkpIFxuYGBgIn0= -->
-<pre class="r"><code>myCorpus &lt;- Corpus(VectorSource(allNYTSearch_OnlyNews$response.docs.lead_paragraph))
-dtm_NYTArticles &lt;-  DocumentTermMatrix(myCorpus, 
-                                   control = 
-                                     list(removePunctuation = TRUE,
-                                          stopwords = TRUE,
-                                          tolower = TRUE,
-              
-                                          removeNumbers = TRUE)) </code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubXlDb3JwdXMgPC0gQ29ycHVzKFZlY3RvclNvdXJjZShhbGxOWVRTZWFyY2hfT25seU5ld3MkcmVzcG9uc2UuZG9jcy5sZWFkX3BhcmFncmFwaCkpXG5kdG1fTllUQXJ0aWNsZXMgPC0gIERvY3VtZW50VGVybU1hdHJpeChteUNvcnB1cywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRyb2wgPSBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsaXN0KHJlbW92ZVB1bmN0dWF0aW9uID0gVFJVRSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0b3B3b3JkcyA9IFRSVUUsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0b2xvd2VyID0gVFJVRSxcbiAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICByZW1vdmVOdW1iZXJzID0gVFJVRSkpIFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r myCorpus &lt;- Corpus(VectorSource(allNYTSearch_OnlyNews$response.docs.lead_paragraph)) dtm_NYTArticles &lt;- DocumentTermMatrix(myCorpus, control = list(removePunctuation = TRUE, stopwords = TRUE, tolower = TRUE,</p>
+<pre><code>                                      removeNumbers = TRUE)) </code></pre>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#tidy format sentiment analysis</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXRleHQpXG5hcF90ZCA8LSB0aWR5KGR0bV9OWVRBcnRpY2xlcylcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)
-library(tidytext)
-ap_td &lt;- tidy(dtm_NYTArticles)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXRleHQpXG5hcF90ZCA8LSB0aWR5KGR0bV9OWVRBcnRpY2xlcylcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r library(dplyr) library(tidytext) ap_td &lt;- tidy(dtm_NYTArticles)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Sentiment from the tdm created above with tidyverse</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXBfc2VudGltZW50cyA8LSBhcF90ZCAlPiVcbiAgaW5uZXJfam9pbihnZXRfc2VudGltZW50cyhcImJpbmdcIiksIGJ5ID0gYyh0ZXJtID0gXCJ3b3JkXCIpKVxuYGBgIn0= -->
-<pre class="r"><code>ap_sentiments &lt;- ap_td %&gt;%
-  inner_join(get_sentiments(&quot;bing&quot;), by = c(term = &quot;word&quot;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuYXBfc2VudGltZW50cyA8LSBhcF90ZCAlPiVcbiAgaW5uZXJfam9pbihnZXRfc2VudGltZW50cyhcXGJpbmdcXCksIGJ5ID0gYyh0ZXJtID0gXFx3b3JkXFwpKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r ap_sentiments &lt;- ap_td %&gt;% inner_join(get_sentiments(), by = c(term = ))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Sentiment from SentimentAnalysis package with LM dicctionary</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VudGltZW50X3Njb3JlTE1fY2xlYW5jb2RlPC0gYW5hbHl6ZVNlbnRpbWVudChkdG1fTllUQXJ0aWNsZXMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBydWxlcz1saXN0KFwiU2VudGltZW50TE1cIj1saXN0KHJ1bGVTZW50aW1lbnQsIGxvYWREaWN0aW9uYXJ5TE0oKSkpKVxuYGBgIn0= -->
-<pre class="r"><code>sentiment_scoreLM_cleancode&lt;- analyzeSentiment(dtm_NYTArticles,
-                              rules=list(&quot;SentimentLM&quot;=list(ruleSentiment, loadDictionaryLM())))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VudGltZW50X3Njb3JlTE1fY2xlYW5jb2RlPC0gYW5hbHl6ZVNlbnRpbWVudChkdG1fTllUQXJ0aWNsZXMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBydWxlcz1saXN0KFxcU2VudGltZW50TE1cXD1saXN0KHJ1bGVTZW50aW1lbnQsIGxvYWREaWN0aW9uYXJ5TE0oKSkpKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r sentiment_scoreLM_cleancode&lt;- analyzeSentiment(dtm_NYTArticles, rules=list(=list(ruleSentiment, loadDictionaryLM())))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Sentiment from SentimentAnalysis package with GI dicctionary</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VudGltZW50X3Njb3JlR0lfY2xlYW5jb2RlPC0gYW5hbHl6ZVNlbnRpbWVudChkdG1fTllUQXJ0aWNsZXMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBydWxlcz1saXN0KFwiU2VudGltZW50R0lcIj1saXN0KHJ1bGVTZW50aW1lbnQsIGxvYWREaWN0aW9uYXJ5R0koKSkpKVxuYGBgIn0= -->
-<pre class="r"><code>sentiment_scoreGI_cleancode&lt;- analyzeSentiment(dtm_NYTArticles,
-                              rules=list(&quot;SentimentGI&quot;=list(ruleSentiment, loadDictionaryGI())))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VudGltZW50X3Njb3JlR0lfY2xlYW5jb2RlPC0gYW5hbHl6ZVNlbnRpbWVudChkdG1fTllUQXJ0aWNsZXMsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICBydWxlcz1saXN0KFxcU2VudGltZW50R0lcXD1saXN0KHJ1bGVTZW50aW1lbnQsIGxvYWREaWN0aW9uYXJ5R0koKSkpKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r sentiment_scoreGI_cleancode&lt;- analyzeSentiment(dtm_NYTArticles, rules=list(=list(ruleSentiment, loadDictionaryGI())))</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>#Sentiment from SentimentAnalysis package from qdap dicctionary</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VudGltZW50X3Njb3JlUURBUF9jbGVhbmNvZGU8LSAoYW5hbHl6ZVNlbnRpbWVudChkdG1fTllUQXJ0aWNsZXMpJFNlbnRpbWVudFFEQVApXG5zZW50aW1lbnRfc2NvcmVRREFQX0RGPC1hcy5kYXRhLmZyYW1lKHNlbnRpbWVudF9zY29yZVFEQVBfY2xlYW5jb2RlKVxuYGBgIn0= -->
-<pre class="r"><code>sentiment_scoreQDAP_cleancode&lt;- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP)
-sentiment_scoreQDAP_DF&lt;-as.data.frame(sentiment_scoreQDAP_cleancode)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VudGltZW50X3Njb3JlUURBUF9jbGVhbmNvZGU8LSAoYW5hbHl6ZVNlbnRpbWVudChkdG1fTllUQXJ0aWNsZXMpJFNlbnRpbWVudFFEQVApXG5zZW50aW1lbnRfc2NvcmVRREFQX0RGPC1hcy5kYXRhLmZyYW1lKHNlbnRpbWVudF9zY29yZVFEQVBfY2xlYW5jb2RlKVxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r sentiment_scoreQDAP_cleancode&lt;- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP) sentiment_scoreQDAP_DF&lt;-as.data.frame(sentiment_scoreQDAP_cleancode)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1961,96 +1944,6 @@ sentiment_scoreQDAP_DF&lt;-as.data.frame(sentiment_scoreQDAP_cleancode)</code></
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua25pdHI6OnB1cmwoXCJDbGVhbl9Db2RlX1NlbnRpbWVudHIuUm1kXCIsIFwiU2NyaXB0X0NsZWFuX0NvZGVfU2VudGltZW50XCIsIGRvY3VtZW50YXRpb24gPSAyKVxuYGBgIn0= -->
 <pre class="r"><code>knitr::purl(&quot;Clean_Code_Sentimentr.Rmd&quot;, &quot;Script_Clean_Code_Sentiment&quot;, documentation = 2)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG5cbnByb2Nlc3NpbmcgZmlsZTogQ2xlYW5fQ29kZV9TZW50aW1lbnRyLlJtZFxuIn0= -->
-<pre><code>
-
-processing file: Clean_Code_Sentimentr.Rmd</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMCVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAzJVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDUlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgOCVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDExJVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMTQlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAxNiVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDE5JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMjIlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAyNCVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDI3JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMzAlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAzMiVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDM1JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMzglXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA0MSVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDQzJVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgNDYlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA0OSVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDUxJVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgNTQlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA1NyVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDU5JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgICAgICAgfCAgNjIlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgICAgICAgICB8ICA2NSVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgICAgICAgIHwgIDY4JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICAgfCAgNzAlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICAgICAgICB8ICA3MyVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgICAgICAgIHwgIDc2JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICAgICAgICAgfCAgNzglXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgICB8ICA4MSVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgICAgICAgIHwgIDg0JVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICAgICAgICAgfCAgODYlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLiAgICAgICB8ICA4OSVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgIHwgIDkyJVxuICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgfC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4gICAgfCAgOTUlXG4gIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICB8Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uICB8ICA5NyVcbiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG4gIHwuLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLnwgMTAwJVxuIn0= -->
-<pre><code>
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |..                                                               |   3%
-  |                                                                       
-  |....                                                             |   5%
-  |                                                                       
-  |.....                                                            |   8%
-  |                                                                       
-  |.......                                                          |  11%
-  |                                                                       
-  |.........                                                        |  14%
-  |                                                                       
-  |...........                                                      |  16%
-  |                                                                       
-  |............                                                     |  19%
-  |                                                                       
-  |..............                                                   |  22%
-  |                                                                       
-  |................                                                 |  24%
-  |                                                                       
-  |..................                                               |  27%
-  |                                                                       
-  |...................                                              |  30%
-  |                                                                       
-  |.....................                                            |  32%
-  |                                                                       
-  |.......................                                          |  35%
-  |                                                                       
-  |.........................                                        |  38%
-  |                                                                       
-  |..........................                                       |  41%
-  |                                                                       
-  |............................                                     |  43%
-  |                                                                       
-  |..............................                                   |  46%
-  |                                                                       
-  |................................                                 |  49%
-  |                                                                       
-  |.................................                                |  51%
-  |                                                                       
-  |...................................                              |  54%
-  |                                                                       
-  |.....................................                            |  57%
-  |                                                                       
-  |.......................................                          |  59%
-  |                                                                       
-  |........................................                         |  62%
-  |                                                                       
-  |..........................................                       |  65%
-  |                                                                       
-  |............................................                     |  68%
-  |                                                                       
-  |..............................................                   |  70%
-  |                                                                       
-  |...............................................                  |  73%
-  |                                                                       
-  |.................................................                |  76%
-  |                                                                       
-  |...................................................              |  78%
-  |                                                                       
-  |.....................................................            |  81%
-  |                                                                       
-  |......................................................           |  84%
-  |                                                                       
-  |........................................................         |  86%
-  |                                                                       
-  |..........................................................       |  89%
-  |                                                                       
-  |............................................................     |  92%
-  |                                                                       
-  |.............................................................    |  95%
-  |                                                                       
-  |...............................................................  |  97%
-  |                                                                       
-  |.................................................................| 100%</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoib3V0cHV0IGZpbGU6IFNjcmlwdF9DbGVhbl9Db2RlX1NlbnRpbWVudFxuIn0= -->
-<pre><code>output file: Script_Clean_Code_Sentiment</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiU2NyaXB0X0NsZWFuX0NvZGVfU2VudGltZW50XCJcbiJ9 -->
-<pre><code>[1] &quot;Script_Clean_Code_Sentiment&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
