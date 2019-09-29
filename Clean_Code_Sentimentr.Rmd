@@ -33,7 +33,7 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 # Let's set some parameters
 term <- "immigration+latino+hispanic" # Need to use + to string together separate words
 begin_date <- "20120101"
-end_date <- "20120201"
+end_date <- "20190201"
 ```
 
 #Searching for the terms that we query above and essentially creating the query object in order to use it for the API
@@ -55,13 +55,15 @@ maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1)
 #Putting the system to sleep in order to 'trick' the computer for the amount of requests made per minute
 
 #How to use sleep function to retrive the 77 pages in the sphere of immigration and Latinos, maybe add "In the US"?
+
+#query from JAN 2012 - 2019 JAN took >17 minutes to run
 ```{r}
 pages <- list()
 for(i in 0:maxPages){
   nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
   message("Retrieving page ", i)
   pages[[i+1]] <- nytSearch 
-  Sys.sleep(1) 
+  Sys.sleep(30) 
 }
 ```
 
