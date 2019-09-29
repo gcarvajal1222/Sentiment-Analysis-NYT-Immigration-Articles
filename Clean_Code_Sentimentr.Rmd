@@ -97,13 +97,6 @@ allNYTSearch_OnlyNews$response.docs.lead_paragraph <-(str_squish(allNYTSearch_On
 allNYTSearch_OnlyNews$id <- seq.int(nrow(allNYTSearch_OnlyNews))
 ```
 
-#Trying to extract specific document in the term document matrix
-# DOESNT WORK
-```{r}
-myReader <- DataframeSource(mapping=list(content=allNYTSearch_OnlyNews$response.docs.lead_paragraph ,id= allNYTSearch_OnlyNews$id))
-tm_try <- VCorpus(DataframeSource(dd), readerControl=list(reader=myReader))
-```
-
 
 
 #Convert datarame into term document matrix from the allNYTSearch_onlyNews
@@ -160,7 +153,7 @@ sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)
 
 #convert R markdown to R script
 ```{r}
-knitr::purl("Clean_Code_Sentimentr.Rmd", "Script_Clean_Code_Sentiment", documentation = 2)
+#knitr::purl("Clean_Code_Sentimentr.Rmd", "Script_Clean_Code_Sentiment", documentation = 2)
 ```
 
 
