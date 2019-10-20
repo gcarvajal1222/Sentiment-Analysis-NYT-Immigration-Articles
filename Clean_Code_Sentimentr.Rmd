@@ -36,13 +36,15 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 term <- "immigrant+immigration" # Need to use + to string together separate words
 begin_date <- "20120101"
 end_date <- "20120201"#change to 2 months to get data faster
-glocations <- "united states"
+#glocations <- "U.S"
 ```
 
 #Searching for the terms that we query above and essentially creating the query object in order to use it for the API
+
+# to add geolocation use "&glocations=",glocations,
 ```{r}
 baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term,
-                  "&begin_date=",begin_date,"&end_date=",end_date, "&glocations=",glocations,
+                  "&begin_date=",begin_date,"&end_date=",end_date,
                   "&facet_filter=true&api-key=",NYTIMES_KEY, sep="")
 ```
 
@@ -77,9 +79,11 @@ allNYTSearch <- rbind_pages(pages)
 ```
 
 #creating a dataframe that are only "news": Function part
+
+#getting rid of anything that could not be "news" so that it doesn't interact with wrong data
 ```{r}
 funct_remove_rows<- function(dataFrame,col_dataframe){
-not_news_variable <- c("Op-Ed","Editorial")
+not_news_variable <- c("Op-Ed","Editorial","Interactive Feature", "Review", "Letter", "Correction")
 allNYTSearch_OnlyNews<<-dataFrame[!grepl(paste(not_news_variable, collapse="|"), col_dataframe),]
 return(allNYTSearch_OnlyNews)
 }
