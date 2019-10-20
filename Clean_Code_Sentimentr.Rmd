@@ -29,17 +29,20 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 #Doesn't seem like we can do "and" "or" for the specific query, something that academic search complete and pro quest are able to do
 
 #Just do it for one month 2012/01/01 - 2012/02/01
+
+#The default connector for values in parentheses is OR. 
 ```{r}
 # Let's set some parameters
-term <- "immigration+latino+hispanic" # Need to use + to string together separate words
+term <- "immigrant+immigration" # Need to use + to string together separate words
 begin_date <- "20120101"
-end_date <- "20190201"
+end_date <- "20120201"#change to 2 months to get data faster
+glocations <- "united states"
 ```
 
 #Searching for the terms that we query above and essentially creating the query object in order to use it for the API
 ```{r}
 baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term,
-                  "&begin_date=",begin_date,"&end_date=",end_date,
+                  "&begin_date=",begin_date,"&end_date=",end_date, "&glocations=",glocations,
                   "&facet_filter=true&api-key=",NYTIMES_KEY, sep="")
 ```
 
@@ -63,7 +66,7 @@ for(i in 0:maxPages){
   nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
   message("Retrieving page ", i)
   pages[[i+1]] <- nytSearch 
-  Sys.sleep(30) 
+  Sys.sleep(5) #change to 5 to test on smaller datasets, 30 for actual execution
 }
 ```
 
