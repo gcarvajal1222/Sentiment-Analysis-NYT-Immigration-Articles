@@ -33,7 +33,7 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 #The default connector for values in parentheses is OR. 
 ```{r}
 # Let's set some parameters
-term <- "immigrant+immigration" # Need to use + to string together separate words
+term <- "refugee" # Need to use + to string together separate words however it is concatinating
 begin_date <- "20120101"
 end_date <- "20120201"#change to 2 months to get data faster
 #glocations <- "U.S"
@@ -42,10 +42,14 @@ end_date <- "20120201"#change to 2 months to get data faster
 #Searching for the terms that we query above and essentially creating the query object in order to use it for the API
 
 # to add geolocation use "&glocations=",glocations,
+
+#"&fq" = "immigration" ,
+
+#"&fq=", "immigration OR refugee" , doesn't even like this?
 ```{r}
-baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term,
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term, 
                   "&begin_date=",begin_date,"&end_date=",end_date,
-                  "&facet_filter=true&api-key=",NYTIMES_KEY, sep="")
+                  "&facet_filter=true&api-key=",NYTIMES_KEY, sep=" ")
 ```
 
 
@@ -62,7 +66,10 @@ maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1)
 #How to use sleep function to retrive the 77 pages in the sphere of immigration and Latinos, maybe add "In the US"?
 
 #query from JAN 2012 - 2019 JAN took >24 minutes to run with sleep 30
+
+#it doesn't like it when using %>% data.frame() in the end of the third line
 ```{r}
+#require(reshape2)
 pages <- list()
 for(i in 0:maxPages){
   nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
@@ -70,6 +77,9 @@ for(i in 0:maxPages){
   pages[[i+1]] <- nytSearch 
   Sys.sleep(5) #change to 5 to test on smaller datasets, 30 for actual execution
 }
+```
+```{r}
+#as.data.frame(nyt)
 ```
 
 
