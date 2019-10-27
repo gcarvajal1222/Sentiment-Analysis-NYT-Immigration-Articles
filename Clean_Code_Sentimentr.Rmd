@@ -33,9 +33,9 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 #The default connector for values in parentheses is OR. 
 ```{r}
 # Let's set some parameters
-term <- "refugee" # Need to use + to string together separate words however it is concatinating
+term <- "immigrant+immigration" # Need to use + to string together separate words however it is concatinating
 begin_date <- "20120101"
-end_date <- "20120201"#change to 2 months to get data faster
+end_date <- "20191201"#change to 2 months to get data faster
 #glocations <- "U.S"
 ```
 
@@ -47,7 +47,7 @@ end_date <- "20120201"#change to 2 months to get data faster
 
 #"&fq=", "immigration OR refugee" , doesn't even like this?
 ```{r}
-baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=",term, 
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigrant OR migrant OR migration OR refugee OR asylum OR undocumented", 
                   "&begin_date=",begin_date,"&end_date=",end_date,
                   "&facet_filter=true&api-key=",NYTIMES_KEY, sep=" ")
 ```
@@ -75,7 +75,7 @@ for(i in 0:maxPages){
   nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
   message("Retrieving page ", i)
   pages[[i+1]] <- nytSearch 
-  Sys.sleep(5) #change to 5 to test on smaller datasets, 30 for actual execution
+  Sys.sleep(30) #change to 5 to test on smaller datasets, 30 for actual execution
 }
 ```
 ```{r}
@@ -93,7 +93,7 @@ allNYTSearch <- rbind_pages(pages)
 #getting rid of anything that could not be "news" so that it doesn't interact with wrong data
 ```{r}
 funct_remove_rows<- function(dataFrame,col_dataframe){
-not_news_variable <- c("Op-Ed","Editorial","Interactive Feature", "Review", "Letter", "Correction")
+not_news_variable <- c("Op-Ed","Editorial","Interactive Feature", "Review", "Letter", "Correction","List")
 allNYTSearch_OnlyNews<<-dataFrame[!grepl(paste(not_news_variable, collapse="|"), col_dataframe),]
 return(allNYTSearch_OnlyNews)
 }
