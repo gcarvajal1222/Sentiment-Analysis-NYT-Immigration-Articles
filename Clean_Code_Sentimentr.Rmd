@@ -33,7 +33,7 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 #The default connector for values in parentheses is OR. 
 ```{r}
 # Let's set some parameters
-term <- "immigrant+immigration" # Need to use + to string together separate words however it is concatinating
+#term <- "immigrant+immigration" # Need to use + to string together separate words however it is concatinating
 begin_date <- "20120101"
 end_date <- "20191201"#change to 2 months to get data faster
 #glocations <- "U.S"
@@ -41,11 +41,8 @@ end_date <- "20191201"#change to 2 months to get data faster
 
 #Searching for the terms that we query above and essentially creating the query object in order to use it for the API
 
-# to add geolocation use "&glocations=",glocations,
+#the https needs to be underlined
 
-#"&fq" = "immigration" ,
-
-#"&fq=", "immigration OR refugee" , doesn't even like this?
 ```{r}
 baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigrant OR migrant OR migration OR refugee OR asylum OR undocumented", 
                   "&begin_date=",begin_date,"&end_date=",end_date,
@@ -75,7 +72,7 @@ for(i in 0:maxPages){
   nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
   message("Retrieving page ", i)
   pages[[i+1]] <- nytSearch 
-  Sys.sleep(30) #change to 5 to test on smaller datasets, 30 for actual execution
+  Sys.sleep(15) #change to 5 to test on smaller datasets, 30 for actual execution
 }
 ```
 ```{r}
@@ -99,16 +96,37 @@ return(allNYTSearch_OnlyNews)
 }
 ```
 
+
 #calling the function on the specific column of allNYTSearch and removing Co-ed and editorials
 
 ```{r}
 funct_remove_rows(allNYTSearch,allNYTSearch$response.docs.type_of_material)
 ```
 
+#getting rid off foreign fiels in news
+```{r}
+
+funct_remove_notUS<- function(dataFrame,col_dataframe){
+not_world_variable <- c("Europe","Middle East")
+allNYTSearch_OnlyNews_inUS<<-dataFrame[!grepl(paste(not_world_variable, collapse="|"), col_dataframe),]
+return(allNYTSearch_OnlyNews_inUS)
+}
+
+```
+
+
+#calling the functiion on 
+
+```{r}
+funct_remove_notUS(allNYTSearch_OnlyNews,allNYTSearch_OnlyNews$response.docs.subsection_name)
+```
+
+
+
 #Getting rid of white spaces
 #verify that this is right
 ```{r}
-allNYTSearch_OnlyNews$response.docs.lead_paragraph <-(str_squish(allNYTSearch_OnlyNews$response.docs.lead_paragraph))
+allNYTSearch_OnlyNews_inUS$response.docs.lead_paragraph <-(str_squish(allNYTSearch_OnlyNews_inUS$response.docs.lead_paragraph))
 ```
 
 #Add Id variable to the NYTSearch_OnlyNews 
@@ -120,7 +138,7 @@ allNYTSearch_OnlyNews$id <- seq.int(nrow(allNYTSearch_OnlyNews))
 
 #Convert datarame into term document matrix from the allNYTSearch_onlyNews
 ```{r}
-myCorpus <- Corpus(VectorSource(allNYTSearch_OnlyNews$response.docs.lead_paragraph))
+myCorpus <- Corpus(VectorSource(allNYTSearch_OnlyNews_inUS$response.docs.lead_paragraph))
 dtm_NYTArticles <-  DocumentTermMatrix(myCorpus, 
                                    control = 
                                      list(removePunctuation = TRUE,
@@ -129,7 +147,6 @@ dtm_NYTArticles <-  DocumentTermMatrix(myCorpus,
               
                                           removeNumbers = TRUE)) 
 ```
-
 
 
 
@@ -169,6 +186,57 @@ sentiment_scoreGI_cleancode<- analyzeSentiment(dtm_NYTArticles,
 sentiment_scoreQDAP_cleancode<- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP)
 sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)
 ```
+
+
+#combininig 3 sentiment analysis datasets
+
+```{r}
+all_sentiment_DF <- cbind(sentiment_scoreLM_cleancode,sentiment_scoreGI_cleancode,sentiment_scoreQDAP_DF)
+```
+
+#plotting sentiments
+```{r}
+library(Hmisc)
+hist.data.frame(all_sentiment_DF)
+```
+
+
+
+
+WORD CLOUD
+```{r}
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+```
+
+
+
+#Only run this for word cloud purposes
+```{r}
+dtm_NYTArticles_word_cloud <-  TermDocumentMatrix(myCorpus, 
+                                   control = 
+                                     list(removePunctuation = TRUE,
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+m <- as.matrix(dtm_NYTArticles_word_cloud)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+N <- 1
+
+newd<-d[-(1:N), , drop = FALSE]
+```
+
+```{r}
+set.seed(1234)
+wordcloud(words = newd$word, freq = d$freq, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+
 
 #convert R markdown to R script
 ```{r}
