@@ -90,7 +90,7 @@ allNYTSearch <- rbind_pages(pages)
 #getting rid of anything that could not be "news" so that it doesn't interact with wrong data
 ```{r}
 funct_remove_rows<- function(dataFrame,col_dataframe){
-not_news_variable <- c("Op-Ed","Editorial","Interactive Feature", "Review", "Letter", "Correction","List")
+not_news_variable <- c("Interactive Feature", "Review", "Letter", "Correction","List")
 allNYTSearch_OnlyNews<<-dataFrame[!grepl(paste(not_news_variable, collapse="|"), col_dataframe),]
 return(allNYTSearch_OnlyNews)
 }
@@ -242,5 +242,8 @@ wordcloud(words = newd$word, freq = d$freq, min.freq = 1,
 ```{r}
 #knitr::purl("Clean_Code_Sentimentr.Rmd", "Script_Clean_Code_Sentiment", documentation = 2)
 ```
-
+#code for the word values of a certain column
+```{r}
+aggregate(data.frame(count = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), list(value = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), length)
+```
 
