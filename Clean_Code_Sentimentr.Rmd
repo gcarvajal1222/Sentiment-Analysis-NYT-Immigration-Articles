@@ -188,6 +188,18 @@ sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)
 ```
 
 
+#putting the dicctionaries in dataframe
+```{r}
+
+LM_positive<-list((str(DictionaryLM[["negative"]])))
+LM_negative <-list((str(DictionaryLM[["positive"]])))
+LM_uncertantity <-list((str(DictionaryLM[["uncertainty"]])))
+
+LM_dicctionary <- do.call(rbind, Map(data.frame, A=LM_positive, B=LM_negative, LM_uncertantity))
+
+```
+
+
 #combininig 3 sentiment analysis datasets
 
 ```{r}
