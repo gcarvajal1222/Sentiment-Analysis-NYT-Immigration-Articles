@@ -15,6 +15,7 @@ library(tm)
 library(tidyverse)
 library(SentimentAnalysis)
 library(quanteda)
+library(xlsx)
 ```
 
 #Creating API varible for "Article Search API FORMAT"
@@ -34,7 +35,7 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 ```{r}
 # Let's set some parameters
 #term <- "immigrant+immigration" # Need to use + to string together separate words however it is concatinating
-begin_date <- "20120101"
+begin_date <- "19800101"
 end_date <- "20191201"#change to 2 months to get data faster
 #glocations <- "U.S"
 ```
@@ -43,8 +44,12 @@ end_date <- "20191201"#change to 2 months to get data faster
 
 #the https needs to be underlined
 
+#immigrant OR migrant OR migration OR refugee OR asylum OR undocumented"
+
+#it needs to be fq not q
+
 ```{r}
-baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigrant OR migrant OR migration OR refugee OR asylum OR undocumented", 
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=immigrant OR immigration OR migrant OR migration OR refugee OR asylum OR undocumented", 
                   "&begin_date=",begin_date,"&end_date=",end_date,
                   "&facet_filter=true&api-key=",NYTIMES_KEY, sep=" ")
 ```
@@ -59,8 +64,6 @@ maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1)
 #from the maxpages we are pasting the baseurl and retriving the information and putting it in a dataframe
 
 #Putting the system to sleep in order to 'trick' the computer for the amount of requests made per minute
-
-#How to use sleep function to retrive the 77 pages in the sphere of immigration and Latinos, maybe add "In the US"?
 
 #query from JAN 2012 - 2019 JAN took >24 minutes to run with sleep 30
 
@@ -80,9 +83,16 @@ for(i in 0:maxPages){
 ```
 
 
-#binding the pages together and creating the final dataframe. 
+#binding the pages for the new result
 ```{r}
-allNYTSearch <- rbind_pages(pages)
+allNYTSearch <-rbind_pages(pages)
+```
+
+
+#binding the pages together and creating the final dataframe. 
+
+```{r}
+allNYTSearch20122019 <- rbind_pages(pages)
 ```
 
 #creating a dataframe that are only "news": Function part
@@ -258,4 +268,18 @@ wordcloud(words = newd$word, freq = d$freq, min.freq = 1,
 ```{r}
 aggregate(data.frame(count = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), list(value = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), length)
 ```
+
+#saving data from 2019 to 2012 for sentiment analysis
+```{r}
+allNYTSearchtosave <- allNYTSearch
+allNYTSearchtosave$response.docs.multimedia <- NULL
+allNYTSearchtosave$response.docs.keywords <- NULL
+allNYTSearchtosave$response.docs.byline.person<- NULL
+#write.xlsx(allNYTSearch, 'allNYTSearch2012-2019-1459hits.xlsx')
+write.table(allNYTSearchtosave, "allNYTSearch20122019hits.txt", sep="\t")
+```
+
+
+
+
 
