@@ -36,7 +36,7 @@ NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
 # Let's set some parameters
 #term <- "immigrant+immigration" # Need to use + to string together separate words however it is concatinating
 begin_date <- "19800101"
-end_date <- "20191201"#change to 2 months to get data faster
+end_date <- "19900101"#change to 2 months to get data faster
 #glocations <- "U.S"
 ```
 
@@ -75,24 +75,24 @@ for(i in 0:maxPages){
   nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
   message("Retrieving page ", i)
   pages[[i+1]] <- nytSearch 
-  Sys.sleep(15) #change to 5 to test on smaller datasets, 30 for actual execution
+  Sys.sleep(25) #change to 5 to test on smaller datasets, 30 for actual execution
 }
 ```
 ```{r}
-#as.data.frame(nyt)
+allNYTSearch <-rbind_pages(pages)
 ```
 
 
 #binding the pages for the new result
 ```{r}
-allNYTSearch <-rbind_pages(pages)
+allNYTSearch1980_year <-rbind_pages(pages) #from 1980 till...
 ```
 
 
 #binding the pages together and creating the final dataframe. 
 
 ```{r}
-allNYTSearch20122019 <- rbind_pages(pages)
+#allNYTSearch20122019 <- rbind_pages(pages)
 ```
 
 #creating a dataframe that are only "news": Function part
