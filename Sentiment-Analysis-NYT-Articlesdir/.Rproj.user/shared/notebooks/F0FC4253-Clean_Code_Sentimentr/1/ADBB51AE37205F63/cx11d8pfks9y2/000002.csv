@@ -1,0 +1,1 @@
+"0","allNYTSearch_OnlyNews$id <- seq.int(nrow(allNYTSearch_OnlyNews))"

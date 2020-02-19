@@ -1,0 +1,15 @@
+"0","#require(reshape2)"
+"0","pages <- list()"
+"0","for(i in 0:maxPages){"
+"0","  nytSearch <- fromJSON(paste0(baseurl, ""&page="", i), flatten = TRUE) %>% data.frame() "
+"0","  message(""Retrieving page "", i)"
+"0","  pages[[i+1]] <- nytSearch "
+"0","  Sys.sleep(20) #change to 5 to test on smaller datasets, 30 for actual execution"
+"0","}"
+"2","Retrieving page 0
+"
+"2","Retrieving page 1
+"
+"2","Error in open.connection(con, ""rb"") : 
+  Timeout was reached: Resolving timed out after 10015 milliseconds
+"

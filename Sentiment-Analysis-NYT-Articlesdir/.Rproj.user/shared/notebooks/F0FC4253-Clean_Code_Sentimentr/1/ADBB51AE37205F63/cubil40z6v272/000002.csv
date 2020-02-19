@@ -1,0 +1,5 @@
+"0","funct_remove_notUS<- function(dataFrame,col_dataframe){"
+"0","not_world_variable <- c(""Europe"",""Middle East"")"
+"0","allNYTSearch_OnlyNews_inUS<<-dataFrame[!grepl(paste(not_world_variable, collapse=""|""), col_dataframe),]"
+"0","return(allNYTSearch_OnlyNews_inUS)"
+"0","}"

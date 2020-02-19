@@ -1,0 +1,8 @@
+"0","myCorpus <- Corpus(VectorSource(result_all_dfs_copy$response.docs.lead_paragraph))"
+"0","dtm_NYTArticles <-  DocumentTermMatrix(myCorpus, "
+"0","                                   control = "
+"0","                                     list(removePunctuation = TRUE,"
+"0","                                          stopwords = TRUE,"
+"0","                                          tolower = TRUE,"
+"0","              "
+"0","                                          removeNumbers = TRUE)) "

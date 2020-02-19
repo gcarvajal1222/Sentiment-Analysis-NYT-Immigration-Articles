@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1581132606124.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B519F7AE",
+    "lastKnownWriteTime" : 7234321835778667369,
+    "last_content_update" : 1581132606124,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "DD50A2AE",
+        "caption" : "allNYTSearch_try2010_04_30",
+        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=allNYTSearch_try2010_04_30&cache_key=DD50A2AE",
+        "displayedObservations" : 190,
+        "environment" : "_rs_no_env",
+        "object" : "allNYTSearch_try2010_04_30",
+        "preview" : 0,
+        "totalObservations" : 190,
+        "variables" : 33
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

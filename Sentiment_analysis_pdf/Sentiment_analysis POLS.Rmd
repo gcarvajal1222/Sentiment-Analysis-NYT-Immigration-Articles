@@ -1,0 +1,243 @@
+---
+title: "R Notebook Sentiment Analysis_POLS"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+packages needed:
+tm
+qdap
+SentimentAnalysis
+SnowballC
+NLP
+
+Converting pdf into text files and putting it back on the same folder
+```{r}
+file_list <- list.files(".", full.names = TRUE, pattern = '.pdf$')
+
+s_pdf_text <- safely(pdf_text) # helps catch errors
+
+walk(file_list, ~{                                     # iterate over the files
+
+  res <- s_pdf_text(.x)                                # try to read it in
+  if (!is.null(res$result)) {                          # if successful
+
+    message(sprintf("Processing [%s]", .x))
+
+    txt_file <- sprintf("%stxt", sub("pdf$", "", .x))  # make a new filename
+
+    unlist(res$result) %>%                             # cld be > 1 pg (which makes a list)
+      tolower() %>%                                    
+      paste0(collapse="\n") %>%                        # make one big text block with line breaks
+      cat(file=txt_file)                               # write it out
+
+  } else {                                             # if not successful
+    message(sprintf("Failure converting [%s]", .x))    # show a message
+  }
+
+})
+```
+
+Reading the pdf files for sentiment analysis pdf style
+```{r}
+my_corpus <- Corpus(DirSource("~/Project SANY/Sentiment Analysis R bagel", pattern = ".pdf"), 
+                               readerControl = list(reader = readPDF))
+```
+
+
+Reading text files; possibly newspapers from text files
+```{r}
+my_corpus <- Corpus(DirSource("~/Project SANY/Sentiment Analysis R bagel", pattern = ".txt"), 
+                               readerControl = list(reader = readPlain))
+
+```
+
+
+Converting each newspaper into a DTM in order to organize it and remove unwanted things such as punctuation, stopwords, lower everything and remove numbers
+
+Maybe change this to Term Document Matrix?
+```{r}
+
+NYTNewspapers.tdm <- DocumentTermMatrix(my_corpus, 
+                                   control = 
+                                     list(removePunctuation = TRUE,
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+
+```
+
+
+
+```{r}
+findMostFreqTerms(NYTNewspapers.tdm)
+```
+
+Counts of words for each document
+```{r}
+rowSums(as.matrix(NYTNewspapers.tdm))
+```
+
+Sentiment Analysis using QDAP
+```{r}
+
+sentiment_scoreQDAP<- (analyzeSentiment(my_corpus)$SentimentQDAP)
+
+sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP)
+
+sentiment_scoreQDAP_DF$id <- c(1,2,3)
+```
+
+```{r}
+SdataFrame<-as.data.frame(sentiment_score)
+```
+
+
+Use this if you want to do InterCoder Reliablity
+```{r}
+response <- c(+1, -1, -1)
+
+compareToResponse(SdataFrame,response)
+```
+
+Make the dicctionary availbale in R for GI (example)
+```{r}
+data(DictionaryGI)
+data(DictionaryQDAP)
+```
+
+Display dicctionary QDAP
+```{r}
+Dictionary_GI<-as.data.frame(str(Dictionary))
+```
+
+```{r}
+# Access dictionary as an object of type SentimentDictionary
+dict.GI <- loadDictionaryGI()
+# Print summary statistics of dictionary
+summary(dict.GI)
+```
+
+Do sentiment analysis on corpus with Dictionary LM
+
+```{r}
+sentiment_scoreLM<- analyzeSentiment(my_corpus,
+                              rules=list("SentimentLM"=list(ruleSentiment, loadDictionaryLM())))
+
+sentiment_scoreLM$id <- c(1,2,3)
+
+```
+
+Do sentiment analysis on corpus with Dictionary GI
+
+```{r}
+sentiment_scoreGI<- analyzeSentiment(my_corpus,
+                              rules=list("SentimentGI"=list(ruleSentiment, loadDictionaryGI())))
+
+sentiment_scoreGI$id <- c(1,2,3)
+
+```
+
+
+
+Extracting the names of each newspaper from the folder
+```{r}
+Newspaper_names =  c(list.files(".", full.names = TRUE, pattern = '.txt$'))
+Newspaper_names_DF<-as.data.frame(Newspaper_names)
+
+Newspaper_names_DF$id <- c(1,2,3)
+
+```
+
+Combining the dataframes with the names and the different scores of each dictionary analysis 
+
+```{r}
+Merged_DF_Two = merge(Newspaper_names_DF,sentiment_scoreGI, by.x=c("id"))
+Merged_DF_Three = merge(Merged_DF_Two,sentiment_scoreLM, by.x=c("id"))
+Merged_DF_Four = merge(Merged_DF_Three,sentiment_scoreQDAP_DF, by.x=c("id"))
+```
+
+
+Count words in the Corpus
+
+```{r}
+countWords(my_corpus)
+```
+
+Sentiment score defined as the difference between positive and negative word counts divided by the
+total number of words.
+
+Given the number of positive words P and the number of negative words N. Further, let T denote
+the total number of words in that document. Then, the sentiment ratio is defined as  P − N/T
+
+```{r}
+ruleSentiment(NYTNewspapers.tdm, loadDictionaryLM())
+
+```
+
+Analyze most common words in the Document doing TERMDOCMATRIX with Stemming.
+
+```{r}
+NYTNewspapers.tdm2 <- TermDocumentMatrix(my_corpus, 
+                                   control = 
+                                     list(
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+                                          stemDocument = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+```
+
+```{r}
+NYTNewspaper_m<- as.matrix(NYTNewspapers.tdm2)
+
+# Calculate the row sums of coffee_m
+term_frequency <- rowSums(NYTNewspaper_m)
+
+# Sort term_frequency in decreasing order
+term_frequency <- sort(term_frequency, decreasing = TRUE)
+
+# View the top 10 most common words
+term_frequency[1:100]
+
+# Plot a barchart of the 10 most common words
+barplot(term_frequency[30:40], col = "tan", las = 2)
+```
+```{r}
+sentiment_scoreQDAPTDM<- (analyzeSentiment(NYTNewspapers.tdm2)$SentimentQDAP)
+
+sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP)
+```
+
+Sentiment Analysis with GI with stemming
+
+```{r}
+sentiment_scoreGI_Stemming<- analyzeSentiment(NYTNewspapers.tdm2,
+                              rules=list("SentimentGI"=list(ruleSentiment, loadDictionaryGI())))
+
+sentiment_scoreGI_Stemming$id <- c(1,2,3)
+```
+
+
+merging into dataframe with stemming
+```{r}
+Merged_GIStemming = merge(Newspaper_names_DF,sentiment_scoreGI_Stemming,by.x=c("id") )
+```
+
+
+
+```{r}
+ruleRatio(NYTNewspapers.tdm2, loadDictionaryGI())
+```
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

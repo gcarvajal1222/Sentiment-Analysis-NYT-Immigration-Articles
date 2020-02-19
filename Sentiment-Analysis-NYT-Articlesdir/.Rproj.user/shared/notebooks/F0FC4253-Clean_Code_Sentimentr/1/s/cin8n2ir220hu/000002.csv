@@ -1,0 +1,2 @@
+"0","initialQuery <- fromJSON(baseurl)"
+"0","maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1) "

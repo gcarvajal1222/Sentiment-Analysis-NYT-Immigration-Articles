@@ -1,0 +1,2 @@
+"0","sentiment_scoreLM_cleancode<- analyzeSentiment(dtm_NYTArticles,"
+"0","                              rules=list(""SentimentLM""=list(ruleSentiment, loadDictionaryLM())))"

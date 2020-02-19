@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580610079408.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F32BCB39",
+    "lastKnownWriteTime" : 8386114214840984143,
+    "last_content_update" : 1580610079408,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "FCAA59DF",
+        "caption" : "allNYTSearch_to_python",
+        "contentUrl" : "grid_resource/gridviewer.html?env=_rs_no_env&obj=allNYTSearch_to_python&cache_key=FCAA59DF",
+        "displayedObservations" : "20",
+        "environment" : "_rs_no_env",
+        "object" : "allNYTSearch_to_python",
+        "preview" : "0",
+        "totalObservations" : "20",
+        "variables" : "32"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

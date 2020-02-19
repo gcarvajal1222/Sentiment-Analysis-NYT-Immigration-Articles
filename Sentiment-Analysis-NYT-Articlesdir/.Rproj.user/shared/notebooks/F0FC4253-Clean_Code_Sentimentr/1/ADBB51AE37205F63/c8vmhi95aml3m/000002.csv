@@ -1,0 +1,2 @@
+"0","sentiment_scoreQDAP_cleancode<- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP)"
+"0","sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)"

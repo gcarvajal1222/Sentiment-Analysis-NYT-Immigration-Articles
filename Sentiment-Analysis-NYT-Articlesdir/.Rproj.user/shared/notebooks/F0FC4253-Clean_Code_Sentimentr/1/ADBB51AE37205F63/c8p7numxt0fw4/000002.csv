@@ -1,0 +1,1 @@
+"0","aggregate(data.frame(count = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), list(value = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), length)"

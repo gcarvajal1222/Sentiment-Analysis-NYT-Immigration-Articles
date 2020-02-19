@@ -1,0 +1,4 @@
+"0","set.seed(1234)"
+"0","wordcloud(words = newd$word, freq = d$freq, min.freq = 1,"
+"0","          max.words=200, random.order=FALSE, rot.per=0.35, "
+"0","          colors=brewer.pal(8, ""Dark2""))"

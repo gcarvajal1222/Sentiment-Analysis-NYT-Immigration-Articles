@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1580828258203.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2248904018",
+    "id" : "9E98CAEE",
+    "lastKnownWriteTime" : 1581495122,
+    "last_content_update" : 1582088013207,
+    "path" : "~/GitHub/Sentiment-Analysis-NYT-Articles/Sentiment-Analysis-NYT-Articlesdir/extracting_data_r.Rmd",
+    "project_path" : "extracting_data_r.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "264,86",
+        "scrollLine" : "240",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
