@@ -1,0 +1,23 @@
+Refrerences:
+
+latino|latinos|latina|latinas
+latinx|hispanic|hispanics|south americans|south america
+
+Nationality:
+
+mexican|mexicans|
+central american|central americans|salvadoran|
+salvadorans|honduran|hondurans|guatemalan|
+guatemalans|costa rican|costa ricans|
+panamanian|nicaraguan|colombian|colombians|
+venezuelan|venezuelans|ecuadorian|ecuadorians|bolivian|bolivains|brazilian|brazilians|paraguayan|parayuayans
+uruguayan|uruguayans|argentine|argentines|chilean|chileans
+
+|cuban|dominican|puerto ricans|
+
+Countries:
+mexico|honduras|el salvador|guatemala|costa rica|panama|nicaragua|ecuador|brazil|paraguay
+   
+Nationality not in central or south american:
+
+|cuban|dominican|puerto ricans|
