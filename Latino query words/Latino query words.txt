@@ -1,4 +1,4 @@
-Refrerences:
+Latino Query:
 
 latino|latinos|latina|latinas
 latinx|hispanic|hispanics|south americans|south america
@@ -11,13 +11,16 @@ salvadorans|honduran|hondurans|guatemalan|
 guatemalans|costa rican|costa ricans|
 panamanian|nicaraguan|colombian|colombians|
 venezuelan|venezuelans|ecuadorian|ecuadorians|bolivian|bolivains|brazilian|brazilians|paraguayan|parayuayans
-uruguayan|uruguayans|argentine|argentines|chilean|chileans
+uruguayan|uruguayans|argentine|argentines|chilean|chileans|nicaraguans|nicaraguan
 
-|cuban|dominican|puerto ricans|
+|cuban|cubans|dominican|dominicans|puerto ricans|haitian|haitians|
 
 Countries:
-mexico|honduras|el salvador|guatemala|costa rica|panama|nicaragua|ecuador|brazil|paraguay
+mexico|honduras|el salvador|guatemala|costa rica|panama|nicaragua|ecuador|brazil|paraguay|haiti|venezuela|belize|cuba|puerto rico|domenican republic|
    
-Nationality not in central or south american:
 
-|cuban|dominican|puerto ricans|
+
+
+Final line: Code
+
+latino|latinos|latina|latinas|latinx|hispanic|hispanics|south americans|south america|mexican|mexicans|central american|central americans|salvadoran|salvadorans|honduran|hondurans|guatemalan|guatemalans|costa rican|costa ricans|panamanian|nicaraguan|colombian|colombians|venezuelan|venezuelans|ecuadorian|ecuadorians|bolivian|bolivains|brazilian|brazilians|paraguayan|parayuayans|uruguayan|uruguayans|argentine|argentines|chilean|chileans|nicaraguans|nicaraguan|cuban|cubans|dominican|dominicans|puerto ricans|haitian|haitians|mexico|honduras|el salvador|guatemala|costa rica|panama|nicaragua|ecuador|brazil|paraguay|haiti|venezuela|belize|cuba|puerto rico|domenican republic
