@@ -1,0 +1,292 @@
+---
+title: "Clean Code SentimentR with API extraction of first paragraph"
+output: html_notebook
+---
+
+
+#Loading Nessesary libraries for sentiment Analysis
+```{r}
+library(sentimentr)
+library(qdap)
+library(jsonlite)
+library(dplyr)
+library(ggplot2)
+library(tm)
+library(tidyverse)
+library(SentimentAnalysis)
+library(quanteda)
+library(xlsx)
+```
+
+#Creating API varible for "Article Search API FORMAT"
+```{r}
+NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
+```
+
+#creating the query nessesary to extract wanted information
+
+#Professor Johnson still has to give me the list of words nessesary for query 
+
+#Doesn't seem like we can do "and" "or" for the specific query, something that academic search complete and pro quest are able to do
+
+#Just do it for one month 2012/01/01 - 2012/02/01
+
+#The default connector for values in parentheses is OR. 
+```{r}
+# Let's set some parameters
+#term <- "immigrant+immigration" # Need to use + to string together separate words however it is concatinating
+begin_date <- "19800101"
+end_date <- "19900101"#change to 2 months to get data faster
+#glocations <- "U.S"
+```
+
+#Searching for the terms that we query above and essentially creating the query object in order to use it for the API
+
+#the https needs to be underlined
+
+#immigrant OR migrant OR migration OR refugee OR asylum OR undocumented"
+
+#it needs to be fq not q
+
+```{r}
+baseurl <- paste0("http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=immigrant OR immigration OR migrant OR migration OR refugee OR asylum OR undocumented", 
+                  "&begin_date=",begin_date,"&end_date=",end_date,
+                  "&facet_filter=true&api-key=",NYTIMES_KEY, sep=" ")
+```
+
+
+#Returning a Json object and calculating the max pages from the query, there is a max of 10 objects (newspaper articles) per page
+```{r}
+initialQuery <- fromJSON(baseurl)
+maxPages <- round((initialQuery$response$meta$hits[1] / 10)-1) 
+```
+
+#from the maxpages we are pasting the baseurl and retriving the information and putting it in a dataframe
+
+#Putting the system to sleep in order to 'trick' the computer for the amount of requests made per minute
+
+#query from JAN 2012 - 2019 JAN took >24 minutes to run with sleep 30
+
+#it doesn't like it when using %>% data.frame() in the end of the third line
+```{r}
+#require(reshape2)
+pages <- list()
+for(i in 0:maxPages){
+  nytSearch <- fromJSON(paste0(baseurl, "&page=", i), flatten = TRUE) %>% data.frame() 
+  message("Retrieving page ", i)
+  pages[[i+1]] <- nytSearch 
+  Sys.sleep(25) #change to 5 to test on smaller datasets, 30 for actual execution
+}
+```
+```{r}
+allNYTSearch <-rbind_pages(pages)
+```
+
+
+#binding the pages for the new result
+```{r}
+allNYTSearch1980_year <-rbind_pages(pages) #from 1980 till...
+```
+
+
+#binding the pages together and creating the final dataframe. 
+
+```{r}
+#allNYTSearch20122019 <- rbind_pages(pages)
+```
+
+#creating a dataframe that are only "news": Function part
+
+#getting rid of anything that could not be "news" so that it doesn't interact with wrong data
+```{r}
+funct_remove_rows<- function(dataFrame,col_dataframe){
+not_news_variable <- c("Interactive Feature", "Review", "Letter", "Correction","List")
+allNYTSearch_OnlyNews<<-dataFrame[!grepl(paste(not_news_variable, collapse="|"), col_dataframe),]
+return(allNYTSearch_OnlyNews)
+}
+```
+
+
+#calling the function on the specific column of allNYTSearch and removing Co-ed and editorials
+
+```{r}
+funct_remove_rows(allNYTSearch,allNYTSearch$response.docs.type_of_material)
+```
+
+#getting rid off foreign fiels in news
+```{r}
+
+funct_remove_notUS<- function(dataFrame,col_dataframe){
+not_world_variable <- c("Europe","Middle East")
+allNYTSearch_OnlyNews_inUS<<-dataFrame[!grepl(paste(not_world_variable, collapse="|"), col_dataframe),]
+return(allNYTSearch_OnlyNews_inUS)
+}
+
+```
+
+
+#calling the functiion on 
+
+```{r}
+funct_remove_notUS(allNYTSearch_OnlyNews,allNYTSearch_OnlyNews$response.docs.subsection_name)
+```
+
+
+
+#Getting rid of white spaces
+#verify that this is right
+```{r}
+allNYTSearch_OnlyNews_inUS$response.docs.lead_paragraph <-(str_squish(allNYTSearch_OnlyNews_inUS$response.docs.lead_paragraph))
+```
+
+#Add Id variable to the NYTSearch_OnlyNews 
+```{r}
+allNYTSearch_OnlyNews$id <- seq.int(nrow(allNYTSearch_OnlyNews))
+```
+
+
+
+#Convert datarame into term document matrix from the allNYTSearch_onlyNews
+```{r}
+myCorpus <- Corpus(VectorSource(allNYTSearch_OnlyNews_inUS$response.docs.lead_paragraph))
+dtm_NYTArticles <-  DocumentTermMatrix(myCorpus, 
+                                   control = 
+                                     list(removePunctuation = TRUE,
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+```
+
+
+
+
+
+#tidy format sentiment analysis
+```{r}
+library(dplyr)
+library(tidytext)
+ap_td <- tidy(dtm_NYTArticles)
+```
+
+#Sentiment from the tdm created above with tidyverse
+```{r}
+ap_sentiments <- ap_td %>%
+  inner_join(get_sentiments("bing"), by = c(term = "word"))
+```
+#Sentiment from SentimentAnalysis package with LM dicctionary
+
+```{r}
+sentiment_scoreLM_cleancode<- analyzeSentiment(dtm_NYTArticles,
+                              rules=list("SentimentLM"=list(ruleSentiment, loadDictionaryLM())))
+```
+#Sentiment from SentimentAnalysis package with GI dicctionary
+
+
+```{r}
+sentiment_scoreGI_cleancode<- analyzeSentiment(dtm_NYTArticles,
+                              rules=list("SentimentGI"=list(ruleSentiment, loadDictionaryGI())))
+
+
+```
+
+#Sentiment from SentimentAnalysis package from qdap dicctionary
+
+```{r}
+sentiment_scoreQDAP_cleancode<- (analyzeSentiment(dtm_NYTArticles)$SentimentQDAP)
+sentiment_scoreQDAP_DF<-as.data.frame(sentiment_scoreQDAP_cleancode)
+```
+
+
+#putting the dicctionaries in dataframe
+```{r}
+
+LM_positive<-list((str(DictionaryLM[["negative"]])))
+LM_negative <-list((str(DictionaryLM[["positive"]])))
+LM_uncertantity <-list((str(DictionaryLM[["uncertainty"]])))
+
+LM_dicctionary <- do.call(rbind, Map(data.frame, A=LM_positive, B=LM_negative, LM_uncertantity))
+
+```
+
+
+#combininig 3 sentiment analysis datasets
+
+```{r}
+all_sentiment_DF <- cbind(sentiment_scoreLM_cleancode,sentiment_scoreGI_cleancode,sentiment_scoreQDAP_DF)
+```
+
+#plotting sentiments
+```{r}
+library(Hmisc)
+hist.data.frame(all_sentiment_DF)
+```
+
+
+
+
+WORD CLOUD
+```{r}
+library("SnowballC")
+library("wordcloud")
+library("RColorBrewer")
+```
+
+
+
+#Only run this for word cloud purposes
+```{r}
+dtm_NYTArticles_word_cloud <-  TermDocumentMatrix(myCorpus, 
+                                   control = 
+                                     list(removePunctuation = TRUE,
+                                          stopwords = TRUE,
+                                          tolower = TRUE,
+              
+                                          removeNumbers = TRUE)) 
+m <- as.matrix(dtm_NYTArticles_word_cloud)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+N <- 1
+
+newd<-d[-(1:N), , drop = FALSE]
+```
+
+```{r}
+set.seed(1234)
+wordcloud(words = newd$word, freq = d$freq, min.freq = 1,
+          max.words=200, random.order=FALSE, rot.per=0.35, 
+          colors=brewer.pal(8, "Dark2"))
+```
+
+
+
+#convert R markdown to R script
+```{r}
+#knitr::purl("Clean_Code_Sentimentr.Rmd", "Script_Clean_Code_Sentiment", documentation = 2)
+```
+#code for the word values of a certain column
+```{r}
+aggregate(data.frame(count = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), list(value = allNYTSearch_OnlyNews_inUS$response.docs.subsection_name), length)
+```
+
+#extracting the years that were published in this analysis
+```{r}
+allNYTSearch1980_year$year_published<-substr(allNYTSearch1980_year$response.docs.pub_date, 1, 4)
+```
+
+
+
+#saving data from 2019 to 2012 for sentiment analysis
+```{r}
+allNYTSearchtosave <- allNYTSearch
+allNYTSearchtosave$response.docs.multimedia <- NULL
+allNYTSearchtosave$response.docs.keywords <- NULL
+allNYTSearchtosave$response.docs.byline.person<- NULL
+#write.xlsx(allNYTSearch, 'allNYTSearch2012-2019-1459hits.xlsx')
+write.table(allNYTSearchtosave, "allNYTSearch20122019hits.txt", sep="\t")
+```
+
+
+
+
+
