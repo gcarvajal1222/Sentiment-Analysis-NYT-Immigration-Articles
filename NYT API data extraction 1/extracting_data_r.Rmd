@@ -23,7 +23,7 @@ library(xlsx)
 
 #Creating API varible for "Article Search API FORMAT"
 ```{r}
-NYTIMES_KEY="a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5"
+NYTIMES_KEY="PRIVATE KEY"
 ```
 
 #creating the query nessesary to extract wanted information
