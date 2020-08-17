@@ -1,2 +1,0 @@
-"0","ap_sentiments <- ap_td %>%"
-"0","  inner_join(get_sentiments(""bing""), by = c(term = ""word""))"

@@ -1,1 +1,0 @@
-"0","allNYTSearch1980_year$year_published<-substr(allNYTSearch1980_year$response.docs.pub_date, 1, 4)"

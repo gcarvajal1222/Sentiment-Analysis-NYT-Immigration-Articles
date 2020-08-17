@@ -1,4 +1,0 @@
-"0","library(dplyr)"
-"0","library(tidytext)"
-"2","package ‘tidytext’ was built under R version 3.6.1"
-"0","ap_td <- tidy(dtm_NYTArticles)"

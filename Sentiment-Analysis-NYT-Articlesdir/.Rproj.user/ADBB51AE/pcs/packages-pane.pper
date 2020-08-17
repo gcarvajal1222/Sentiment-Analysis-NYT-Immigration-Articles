@@ -1,7 +1,0 @@
-{
-    "installOptions" : {
-        "installDependencies" : true,
-        "installFromRepository" : true,
-        "libraryPath" : "C:/Users/pdgac/AppData/Local/Continuum/anaconda3/envs/Renv/Lib/R/library"
-    }
-}

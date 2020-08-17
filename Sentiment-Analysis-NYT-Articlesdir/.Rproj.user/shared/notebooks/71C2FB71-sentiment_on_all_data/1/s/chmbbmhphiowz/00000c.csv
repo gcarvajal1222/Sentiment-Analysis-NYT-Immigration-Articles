@@ -1,3 +1,0 @@
-"0","#Getting rid of white spaces"
-"0","#verify that this is right"
-"0","result_all_dfs_copy$response.docs.lead_paragraph <-(str_squish(result_all_dfs_copy$response.docs.lead_paragraph))"

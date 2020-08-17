@@ -1,3 +1,0 @@
-"0","baseurl <- paste0(""http://api.nytimes.com/svc/search/v2/articlesearch.json?fq=lead_paragraph:(migrant OR immigration OR immigrant OR migration OR refugee OR alien OR undocumented OR asylum) AND type_of_material:news "",""&sort="",oldest,"
-"0","                  ""&begin_date="",begin_date,""&end_date="",end_date,"
-"0","                  ""&facet_filter=true&api-key="",NYTIMES_KEY, sep="" "")"

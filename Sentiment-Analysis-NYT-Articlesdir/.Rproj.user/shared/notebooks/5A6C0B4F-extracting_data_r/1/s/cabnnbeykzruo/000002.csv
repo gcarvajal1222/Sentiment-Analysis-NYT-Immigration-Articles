@@ -1,6 +1,0 @@
-"0","allNYTSearchtosave <- result_all_dfs"
-"0","allNYTSearchtosave$response.docs.multimedia <- NULL"
-"0","allNYTSearchtosave$response.docs.keywords <- NULL"
-"0","allNYTSearchtosave$response.docs.byline.person<- NULL"
-"0","#write.xlsx(allNYTSearch, 'allNYTSearch2012-2019-1459hits.xlsx')"
-"0","write.table(allNYTSearchtosave, ""allNYTSearch1980to2020.txt"", sep=""\t"")"

@@ -1,3 +1,0 @@
-"0","library(dplyr)"
-"0","library(tidytext)"
-"0","ap_td <- tidy(dtm_NYTArticles)"

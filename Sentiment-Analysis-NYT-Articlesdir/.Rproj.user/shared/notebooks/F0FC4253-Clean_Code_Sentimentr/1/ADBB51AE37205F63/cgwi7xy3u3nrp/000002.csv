@@ -1,2 +1,0 @@
-"0","sentiment_scoreGI_cleancode<- analyzeSentiment(dtm_NYTArticles,"
-"0","                              rules=list(""SentimentGI""=list(ruleSentiment, loadDictionaryGI())))"

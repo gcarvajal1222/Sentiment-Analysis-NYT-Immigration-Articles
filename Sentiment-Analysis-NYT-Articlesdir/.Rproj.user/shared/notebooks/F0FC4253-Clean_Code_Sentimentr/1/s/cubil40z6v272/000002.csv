@@ -1,5 +1,0 @@
-"0","funct_remove_rows<- function(dataFrame,col_dataframe){"
-"0","not_news_variable <- c(""Interactive Feature"", ""Review"", ""Letter"", ""Correction"",""List"")"
-"0","allNYTSearch_OnlyNews<<-dataFrame[!grepl(paste(not_news_variable, collapse=""|""), col_dataframe),]"
-"0","return(allNYTSearch_OnlyNews)"
-"0","}"
