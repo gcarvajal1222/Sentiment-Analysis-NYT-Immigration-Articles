@@ -6,7 +6,7 @@ Summary: Extracting the data from NYT times Developer website using R notebook
 Folder: 1-NYT API Data Extraction                                                                                                                                                    
 1. Created R notebook                                                                                                                                                                                       
 2. I followed the steps to extract articles in a table like structure using https://www.storybench.org/working-with-the-new-york-times-api-in-r/                                                                                                                                           
-3. Raw data from 1981-2020 is present in Exctracting NYT API. Only first paragraph is included
+3. Raw data from 1981-2020 is present in Exctracting NYT API including 21455. Only first paragraph is included
 
 
 # Second Step: Preprocessing                                                                                                                                                         
