@@ -26,7 +26,7 @@ Folder 3- Recoding words by hand
 1. Identify problematic words and n-grams counter parts such as "united" which most of them belonged to United States                                                                   
 2. Recoded individual words in the correct sphere using inter-reliability measures to allocate words in the correct sphere                                                                
 
-# Fourth Step Retrain individual Words, Filter USA/ Latino News and Time Series plots:                                                                                                                                                                             
+# Fourth Step: Retrain individual Words, Filter USA/ Latino News and Time Series plots:                                                                                                                                                                             
 
 Folder 4- Retrain and Filter                                                                                                                                                                   
 
@@ -35,7 +35,7 @@ Folder 4- Retrain and Filter
 3. Filter news that were written in the United States                                                                                                                                   
 4. Normalize scores from -1-1 to 0-100 (in percent)                                                                                                                                   
 5. Time series plots of normalized sentiment scores for All Articles, All Latino Articles, USA articles and USA Latino Articles                                                     
-# Final Sentiment output                                                                                                                                                                                  
+# Fith Step: Final Sentiment output                                                                                                                                                                                  
 Folder 5- Final Sentiment output                                                                                                                                                 
 1. Output retrained VADER scores for all the data (NYT_data_1980_to_2020_Retrained)                                                                                                       
 2. Output articles that are just in the United States (US_News_Articles)                                                                                                                
