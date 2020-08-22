@@ -1,5 +1,6 @@
 # Sentiment-Analysis-NYT-Articles
-Sentiment analysis on NYT times data with VADER and Textblob dictionaries
+Sentiment analysis on NYT times data with VADER and Textblob dictionaries                                                                                                                
+# Poster Reference to project:                                                                                                                                                  https://scholar.valpo.edu/cus/917/
 
 # First Step:
 Summary: Extracting the data from NYT times Developer website using R notebook                                                                                                     
@@ -25,13 +26,18 @@ Folder 3- Recoding words by hand
 1. Identify problematic words and n-grams counter parts such as "united" which most of them belonged to United States                                                                   
 2. Recoded individual words in the correct sphere using inter-reliability measures to allocate words in the correct sphere                                                                
 
-# Fourth Step Retrain individual Words, Filter USA/ Latino News and Time Series plots:                                                                                                                                                                             
+# Fourth Step: Retrain individual Words, Filter USA/ Latino News and Time Series plots:                                                                                                                                                                             
 
 Folder 4- Retrain and Filter                                                                                                                                                                   
 
-1. allocate words identified in step 3 into the correct sphere by VADER since it was identified as the better dicctionary.                                                             
+1. allocate words identified in step 3 into the correct sphere by VADER since it was identified as the better dicctionary                                                         
 2. Filter latino news using query specified in folder "latino query"                                                                                                                          
 3. Filter news that were written in the United States                                                                                                                                   
 4. Normalize scores from -1-1 to 0-100 (in percent)                                                                                                                                   
-5. Time series plots of normalized sentiment scores for All Articles, All Latino Articles, USA articles and USA Latino Articles.
+5. Time series plots of normalized sentiment scores for All Articles, All Latino Articles, USA articles and USA Latino Articles                                                     
+# Fith Step: Final Sentiment output                                                                                                                                                                                  
+Folder 5- Final Sentiment output                                                                                                                                                 
+1. Output retrained VADER scores for all the data (NYT_data_1980_to_2020_Retrained)                                                                                                       
+2. Output articles that are just in the United States (US_News_Articles)                                                                                                                
+3. Output articles that are Latino immigration news that appear in the United States (US_Latino_News_Articles)
 
