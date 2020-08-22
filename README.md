@@ -25,7 +25,7 @@ Folder 3- Recoding words by hand
 1. Identify problematic words and n-grams counter parts such as "united" which most of them belonged to United States                                                                   
 2. Recoded individual words in the correct sphere using inter-reliability measures to allocate words in the correct sphere                                                                
 
-# Fourth Step:                                                                                                                                                                             
+# Fourth Step Retrain individual Words, Filter USA/ Latino News and Time Series plots:                                                                                                                                                                             
 
 Folder 4- Retrain and Filter                                                                                                                                                                   
 
