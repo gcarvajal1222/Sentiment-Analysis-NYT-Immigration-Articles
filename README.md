@@ -33,7 +33,8 @@ Folder 4- Retrain and Filter
 1. allocate words identified in step 3 into the correct sphere by VADER since it was identified as the better dicctionary                                                         
 2. Filter latino news using query specified in folder "latino query"                                                                                                                          
 3. Filter news that were written in the United States                                                                                                                                   
-4. Normalize scores from -1-1 to 0-100 (in percent)                                                                                                                                   
+4. Normalize scores from -1-1 to 0-100 (in percent)                                                                                                                                    
+5. Computed the Yearly, Quartely and Monthly mean of normalized scores                                                                                                               
 5. Time series plots of normalized sentiment scores for All Articles, All Latino Articles, USA articles and USA Latino Articles                                                     
 # Fith Step: Final Sentiment output                                                                                                                                                                                  
 Folder 5- Final Sentiment output                                                                                                                                                 
