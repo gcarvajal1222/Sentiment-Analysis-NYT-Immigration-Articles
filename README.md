@@ -48,4 +48,5 @@ Folder 5- Final Sentiment output
 # Extra Analysis:                                                                                                                                                                          
 Extra Analysis for further research implementation in order to aggregate monthly, yearly and quarterly data                                                                      
 # Web App Predicctions (Still in development)                                                                                                                                                          
-Web application in order to predict new articles from retrained data and create a service that ingests new articles via the NYT time API
+1. Build a Machine learning model on retrained VADER data                                                                                                                        
+2. Web application in order to predict new articles from retrained data and create a service that ingests new articles via the NYT time API
