@@ -2,6 +2,11 @@
 Sentiment analysis on NYT times data with VADER and Textblob dictionaries                                                                                                                
 # Poster Reference to project:                                                                                                                                                  https://scholar.valpo.edu/cus/917/
 
+# Tools used
+
+R Studio
+Jupyter Notebooks
+
 # First Step:
 Summary: Extracting the data from NYT times Developer website using R notebook                                                                                                     
 Folder: 1-NYT API Data Extraction                                                                                                                                                    
