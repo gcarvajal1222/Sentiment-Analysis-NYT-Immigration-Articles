@@ -7,8 +7,7 @@ Sentiment analysis on NYT times data with VADER and Textblob dictionaries
 1. R Studio                                                                                                                                                                              
 2. Jupyter Notebooks (python)                                                                                                                                                        
 
-# First Step:
-Summary: Extracting the data from NYT times Developer website using R notebook                                                                                                     
+# First Step: Extracting Data from NYT API                                                                                                                                          
 Folder: 1-NYT API Data Extraction                                                                                                                                                    
 1. Created R notebook                                                                                                                                                                                       
 2. Extract articles in a table like structure using https://www.storybench.org/working-with-the-new-york-times-api-in-r/                                                                 
