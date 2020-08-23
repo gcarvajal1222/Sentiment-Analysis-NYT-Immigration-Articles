@@ -278,7 +278,7 @@ allNYTSearchtosave$response.docs.multimedia <- NULL
 allNYTSearchtosave$response.docs.keywords <- NULL
 allNYTSearchtosave$response.docs.byline.person<- NULL
 #write.xlsx(allNYTSearch, 'allNYTSearch2012-2019-1459hits.xlsx')
-write.table(allNYTSearchtosave, "allNYTSearch1980to2020.txt", sep="\t")
+write.table(raw data/allNYTSearchtosave, "allNYTSearch1980to2020.txt", sep="\t")
 ```
 
 
