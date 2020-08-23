@@ -1,5 +1,5 @@
 # Sentiment-Analysis-NYT-Articles
-Sentiment analysis on NYT times data with VADER and Textblob dictionaries                                                                                                                
+Sentiment analysis on NYT times immigration data with VADER and Textblob dictionaries                                                                                                                
 # Poster Reference to project:                                                                                                                                                  https://scholar.valpo.edu/cus/917/                                                                                                                                                          
 
 # Tools used
