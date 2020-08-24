@@ -40,7 +40,7 @@ Folder 4- Retrain and Filter
 4. Normalize scores from -1-1 to 0-100 (in percent)                                                                                                                                    
 5. Computed the Yearly, Quartely and Monthly mean of normalized scores                                                                                                               
 5. Time series plots of normalized sentiment scores for All Articles, All Latino Articles, USA articles and USA Latino Articles                                                     
-# Fith Step: Final Sentiment output                                                                                                                                                                                  
+# Fifth Step: Final Sentiment output                                                                                                                                                                                  
 Folder 5- Final Sentiment output                                                                                                                                                 
 1. Output retrained VADER scores for all the data (NYT_data_1980_to_2020_Retrained)                                                                                                       
 2. Output articles that are just in the United States (US_News_Articles)                                                                                                                
