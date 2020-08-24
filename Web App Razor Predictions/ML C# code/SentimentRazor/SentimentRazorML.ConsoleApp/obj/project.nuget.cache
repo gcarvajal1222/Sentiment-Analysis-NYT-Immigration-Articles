@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kZvpRNizUk78OL2+8BfeK2PezQvKsR9oMLn1D26eAiPa+cH6oUd+LpXE9oRmbLlFJT5eChXLAdyUd7ILQ/4E6Q==",
+  "dgSpecHash": "cXHnZTUYNJTAWgdpF5yt8m+uOY5uvJyXAJRJAwC5rdSDvX5JhCb2dRUVLweJg3bdUsGb+jnl+RARSZ3xSDct6w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
+  "projectFilePath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wqlb\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\wqlb\\.nuget\\packages\\microsoft.ml\\1.5.0-preview\\microsoft.ml.1.5.0-preview.nupkg.sha512",

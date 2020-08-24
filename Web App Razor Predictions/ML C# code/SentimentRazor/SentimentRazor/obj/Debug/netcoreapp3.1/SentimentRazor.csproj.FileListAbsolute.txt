@@ -95,3 +95,44 @@ C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# cod
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.csproj.CopyComplete
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.dll
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ML.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.Core.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.Data.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.KMeansClustering.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.PCA.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.StandardTrainers.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.Transforms.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.CpuMath.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.ML.DataView.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\System.CodeDom.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libLdaNative.so
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\runtimes\osx-x64\native\libLdaNative.dylib
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\LdaNative.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\LdaNative.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\SentimentRazorML.Model.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\SentimentRazorML.Model.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.csprojAssemblyReference.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.AssemblyInfoInputs.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.AssemblyInfo.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.csproj.CoreCompileInputs.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.RazorAssemblyInfo.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.RazorAssemblyInfo.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.TagHelpers.input.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.TagHelpers.output.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.RazorCoreGenerate.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.RazorTargetAssemblyInfo.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.RazorTargetAssemblyInfo.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.Views.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.csproj.CopyComplete
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.pdb

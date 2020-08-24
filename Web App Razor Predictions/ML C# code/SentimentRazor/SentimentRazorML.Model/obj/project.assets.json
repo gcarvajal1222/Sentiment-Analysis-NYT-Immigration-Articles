@@ -3602,11 +3602,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj",
+      "projectUniqueName": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj",
       "projectName": "SentimentRazorML.Model",
-      "projectPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj",
+      "projectPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj",
       "packagesPath": "C:\\Users\\wqlb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\obj\\",
+      "outputPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wqlb\\AppData\\Roaming\\NuGet\\NuGet.Config",

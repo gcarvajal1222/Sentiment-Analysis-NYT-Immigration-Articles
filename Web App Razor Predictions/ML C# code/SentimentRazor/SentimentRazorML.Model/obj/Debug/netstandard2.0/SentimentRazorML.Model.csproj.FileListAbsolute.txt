@@ -14,3 +14,9 @@ C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# cod
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.csproj.CoreCompileInputs.cache
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.dll
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\C# ML predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.csprojAssemblyReference.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.AssemblyInfoInputs.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.AssemblyInfo.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.csproj.CoreCompileInputs.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.Model\obj\Debug\netstandard2.0\SentimentRazorML.Model.pdb

@@ -3974,11 +3974,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
+      "projectUniqueName": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
       "projectName": "SentimentRazorML.ConsoleApp",
-      "projectPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
+      "projectPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\wqlb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\obj\\",
+      "outputPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\wqlb\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3995,8 +3995,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj": {
-              "projectPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\C# ML predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj"
+            "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj": {
+              "projectPath": "C:\\Users\\wqlb\\Github\\Sentiment-Analysis-NYT-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.Model\\SentimentRazorML.Model.csproj"
             }
           }
         }
