@@ -16,20 +16,23 @@ namespace SentimentRazorML.ConsoleApp
         static void Main(string[] args)
         {
             // Create single instance of sample data from first line of dataset for model input
-            ModelInput sampleData = CreateSingleDataSample(DATA_FILEPATH);
+            //    ModelInput sampleData = CreateSingleDataSample(DATA_FILEPATH);
 
-            // Make a single prediction on the sample data and print results
-            var predictionResult = ConsumeModel.Predict(sampleData);
+            //    // Make a single prediction on the sample data and print results
+            //    var predictionResult = ConsumeModel.Predict(sampleData);
 
-            Console.WriteLine("Using model to make single prediction -- Comparing actual DiscreteSentiment with predicted DiscreteSentiment from sample data...\n\n");
-            Console.WriteLine($"cleanText: {sampleData.CleanText}");
-            Console.WriteLine($"compoundScoresVader: {sampleData.CompoundScoresVader}");
-            Console.WriteLine($"\n\nActual DiscreteSentiment: {sampleData.DiscreteSentiment} \nPredicted DiscreteSentiment value {predictionResult.Prediction} \nPredicted DiscreteSentiment scores: [{String.Join(",", predictionResult.Score)}]\n\n");
-            Console.WriteLine("=============== End of process, hit any key to finish ===============");
-            Console.ReadKey();
+            //    Console.WriteLine("Using model to make single prediction -- Comparing actual DiscreteSentiment with predicted DiscreteSentiment from sample data...\n\n");
+            //    Console.WriteLine($"cleanText: {sampleData.CleanText}");
+            //    Console.WriteLine($"compoundScoresVader: {sampleData.CompoundScoresVader}");
+            //    Console.WriteLine($"\n\nActual DiscreteSentiment: {sampleData.DiscreteSentiment} \nPredicted DiscreteSentiment value {predictionResult.Prediction} \nPredicted DiscreteSentiment scores: [{String.Join(",", predictionResult.Score)}]\n\n");
+            //    Console.WriteLine("=============== End of process, hit any key to finish ===============");
+            //    Console.ReadKey();
+            //}
+
+            // Change this code to create your own sample data
+
         }
-
-        // Change this code to create your own sample data
-       
     }
 }
+
+
