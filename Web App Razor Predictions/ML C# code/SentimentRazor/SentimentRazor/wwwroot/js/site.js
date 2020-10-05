@@ -35,4 +35,15 @@ function updateSentiment() {
         });
 }
 
+function getData() {
+
+    var userInput = $("#Message").val();
+    var prediction = $("#markerValue").text();
+
+    $("#PredToSave").text(prediction);
+    $("#TextToSave").text(userInput);
+
+
+}
+
 $("#Message").on('change input paste', updateSentiment)

@@ -1,19 +1,8 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
-
-<div class="text-left">
-    <h2>
-        Get Articles
-    </h2>
-
-</div>
 
 
-
-<div class="text-center">
+<div class="text-md-left">
     <h2>Live Sentiment</h2>
 
     <p><textarea id="Message" cols="45" placeholder="Type any text like a short review"></textarea></p>
@@ -26,7 +15,25 @@
                 <div>▲</div>
                 <label id="markerValue">Sentiment</label>
             </div>
-            <input type="button" value="Save Prediction" />
+            <input type="button" value="Save Prediction" onclick="getData()" />
         </div>
     </div>
+</div>
+
+
+<div class="text-right">
+    <h2>
+        Display Prediction and text
+    </h2>
+
+    <div>
+        <div>
+            <label id="PredToSave">Prediction to save</label>
+        </div>
+        <div>
+            <label id="TextToSave">text to save</label>
+        </div>
+
+    </div>
+
 </div>
