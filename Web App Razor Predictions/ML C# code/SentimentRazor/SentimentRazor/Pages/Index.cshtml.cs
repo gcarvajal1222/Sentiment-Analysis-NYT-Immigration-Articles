@@ -31,7 +31,8 @@ namespace SentimentRazor.Pages
             var input = new ModelInput { CleanText = text };
             var prediction = _predictionEnginePool.Predict(input);
             var sentiment = prediction.Prediction;
-            return Content(sentiment);
+            var confScore = prediction.Score[0];
+            return Content("Sentiment: " + sentiment + " Confidence Score: " + confScore);
         }
     }
 }
