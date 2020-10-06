@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using System.IO;
 using Microsoft.Extensions.ML;
 using SentimentRazorML.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SentimentRazor
 {
@@ -31,6 +32,7 @@ namespace SentimentRazor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Models.ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //connect to database
             services.AddPredictionEnginePool<ModelInput, ModelOutput>()
         .FromFile(_modelPath);
             services.AddRazorPages();
