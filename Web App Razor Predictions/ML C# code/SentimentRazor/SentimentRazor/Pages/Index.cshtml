@@ -22,17 +22,21 @@
 
 
 <div class="text-sm-center">
-    <h2>
-        Display Prediction and text
-    </h2>
-    <div>
+    <form method="post">
+        <h2>
+            Display Prediction and text
+        </h2>
         <div>
-            <label id="PredToSave">Prediction to save</label>
-        </div>
-        <div>
-            <label id="TextToSave">text to save</label>
-        </div>
+            <div>
+                <label asp-for="SentimentResult.Prediction" id="PredToSave">Prediction to save</label>
+            </div>
+            <div>
+                <label asp-for="SentimentResult.Text" id="TextToSave">text to save</label>
+            </div>
 
-    </div>
+            <input type="submit" value="Create to database" />
+
+        </div>
+    </form>
 
 </div>

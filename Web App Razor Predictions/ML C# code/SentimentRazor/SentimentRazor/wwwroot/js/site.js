@@ -49,7 +49,7 @@ function updateSentiment() {
 
 function getData() {
 
-    var userInput = $("#Message").val();
+    var userInput = $("#Message").text();
     var prediction = $("#markerValue").text();
 
     $("#PredToSave").text(prediction);

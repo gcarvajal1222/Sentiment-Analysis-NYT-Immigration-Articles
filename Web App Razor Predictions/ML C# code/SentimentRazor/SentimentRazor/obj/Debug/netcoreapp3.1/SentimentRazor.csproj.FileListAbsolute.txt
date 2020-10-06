@@ -263,4 +263,4 @@ C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\M
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.csproj.CoreCompileInputs.cache
 C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\SentimentRazor.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\SentimentDb\SentimentDb.cshtml.g.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazor\obj\Debug\netcoreapp3.1\Razor\Pages\SentimentDb.cshtml.g.cs

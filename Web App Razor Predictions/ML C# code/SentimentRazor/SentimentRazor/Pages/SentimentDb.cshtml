@@ -1,0 +1,53 @@
+﻿@page
+@model SentimentRazor.Pages.SentimentDbModel
+
+
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Predictions</h2>
+    </div>
+
+    <div class="col-12 border p-3 mt-3">
+        <form method="post">
+            @if (Model.SentimentResults.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="SentimentResults.FirstOrDefault().Text"></label>
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
+                            <label asp-for="SentimentResults.FirstOrDefault().Prediction"></label>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    @foreach (var item in Model.SentimentResults)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.Text)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Prediction)
+                            </td>
+                            <td>
+                                <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
+                                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>No books available.</p>
+            }
+        </form>
+    </div>
+

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ML;
+using SentimentRazor.Models;
 using SentimentRazorML.Model;
 
 namespace SentimentRazor.Pages
@@ -14,18 +15,36 @@ namespace SentimentRazor.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly PredictionEnginePool<ModelInput, ModelOutput> _predictionEnginePool;
+        private readonly ApplicationDbContext _db;
 
-        public IndexModel(PredictionEnginePool<ModelInput, ModelOutput> predictionEnginePool)
+        public IndexModel(PredictionEnginePool<ModelInput, ModelOutput> predictionEnginePool, ApplicationDbContext db)
         {
             _predictionEnginePool = predictionEnginePool;
+            _db = db;
         }
 
-        public void OnGet()
+        [BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
+        public SentimentResult SentimentResult { get; set; }
+
+        public async Task<IActionResult> OnPost()
         {
+            if (ModelState.IsValid) //checker if the requiered properties are being added in the front end
+            {
+                await _db.SavePrediction.AddAsync(SentimentResult);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("Index");
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                Console.WriteLine(errors);
+                return Page();
 
+
+            }
         }
 
-        public IActionResult OnGetAnalyzeSentiment([FromQuery] string text)
+            public IActionResult OnGetAnalyzeSentiment([FromQuery] string text)
         {
             if (String.IsNullOrEmpty(text)) return Content("Sentiment");
             var input = new ModelInput { CleanText = text };
