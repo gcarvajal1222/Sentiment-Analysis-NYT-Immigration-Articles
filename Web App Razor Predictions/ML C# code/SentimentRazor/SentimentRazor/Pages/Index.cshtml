@@ -2,24 +2,32 @@
 @model IndexModel
 
 
-    <div class="text-center">
-        <form method="post">
-            <h2>Live Sentiment</h2>
+<div class="text-center">
+    <form method="post">
+        <h2>Live Sentiment</h2>
 
-            <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Type any text like a short review"></textarea></p>
+        <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Type any text like a short review"></textarea></p>
 
-            <div class="sentiment">
-                <h4>Your sentiment is...</h4>
+        <div class="sentiment">
+            <h4>Your sentiment is...</h4>
 
-                <div class="marker">
-                    <div id="markerPosition" style="left: 45%;">
-                        <label asp-for="SentimentResult.Prediction" id="markerValue">Sentiment</label>
-                    </div>
-                    <input type="submit" value="Save Prediction" />
+            <div class="marker">
+                <div id="markerPosition" style="left: 45%;">
+                    <label  id="markerValue">Sentiment</label>
                 </div>
+                <div>
+                    <input asp-for="SentimentResult.Prediction"
+                           id="inputPrediction"
+                           type="hidden"
+                           class="Disable"
+                           value="" />
+                </div>
+                <input type="submit" value="Save Prediction" id="GetPrediction" onclick="document.getElementById('inputPrediction').value = getPrediction()"; />
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+</div>
+
 
 
 

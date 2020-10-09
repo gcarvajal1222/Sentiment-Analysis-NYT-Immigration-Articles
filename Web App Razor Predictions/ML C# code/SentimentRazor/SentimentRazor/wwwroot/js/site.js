@@ -47,12 +47,12 @@ function updateSentiment() {
         });
 }
 
-function getData() {
+function getPrediction() {
 
     //var userInput = $("#Message").val();
     var prediction = $("#markerValue").text();
 
-    $("#predictionInput").text(prediction);
+    return prediction;
     //$("#TextToSave").text(userInput);
 
 
