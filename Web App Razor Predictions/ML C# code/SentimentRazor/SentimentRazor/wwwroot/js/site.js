@@ -48,12 +48,9 @@ function updateSentiment() {
 }
 
 function getPrediction() {
-
-    //var userInput = $("#Message").val();
-    var prediction = $("#markerValue").text();
+    var prediction = $("#markerValue").text(); // why is this different than val()
 
     return prediction;
-    //$("#TextToSave").text(userInput);
 
 
 }
