@@ -1,0 +1,16 @@
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\MLModel.zip
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.deps.json
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.runtimeconfig.json
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.runtimeconfig.dev.json
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.Model.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\bin\Debug\netcoreapp2.1\SentimentRazorML.Model.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.csprojAssemblyReference.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.AssemblyInfo.cs
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.csproj.CopyComplete
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.dll
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.pdb
+C:\Users\wqlb\Github\Sentiment-Analysis-NYT-Articles\Web App Razor Predictions\ML C# code\SentimentRazor\SentimentRazorML.ConsoleApp\obj\Debug\netcoreapp2.1\SentimentRazorML.ConsoleApp.genruntimeconfig.cache

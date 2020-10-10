@@ -22,17 +22,39 @@ function updateSentiment() {
 
     getSentiment(userInput)
         .then((sentiment) => {
-            switch (sentiment) {
-                case "positive":
-                    updateMarker(100.0, sentiment);
-                    break;
-                case "negative":
-                    updateMarker(0.0, sentiment);
-                    break;
-                default:
-                    updateMarker(45.0, "Neutral");
+
+            if (sentiment.startsWith("Sentiment: positive")) {
+                updateMarker(100.0, sentiment);
             }
+            else if (sentiment.startsWith("Sentiment: negative")) {
+                updateMarker(100.0, sentiment);
+            }
+            else if (sentiment.startsWith("Sentiment: neutral")) {
+                updateMarker(100.0, sentiment);
+            }
+            else {
+                updateMarker(100.0, "Sentiment");
+            }
+            
+
+            //switch (sentiment) {
+            //    case "positive":
+            //        updateMarker(100.0, sentiment);
+            //        break;
+            //    case "negative":
+            //        updateMarker(0.0, sentiment);
+            //        break;
+            //    default:
+            //        updateMarker(45.0, "Neutral");
+            //}
         });
+}
+
+function getPrediction() {
+    var prediction = $("#markerValue").text(); // why is this different than val()
+    return prediction;
+
+
 }
 
 $("#Message").on('change input paste', updateSentiment)
