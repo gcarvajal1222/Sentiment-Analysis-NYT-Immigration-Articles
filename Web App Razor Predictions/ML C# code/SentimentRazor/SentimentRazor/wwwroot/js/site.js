@@ -52,7 +52,6 @@ function updateSentiment() {
 
 function getPrediction() {
     var prediction = $("#markerValue").text(); // why is this different than val()
-
     return prediction;
 
 
