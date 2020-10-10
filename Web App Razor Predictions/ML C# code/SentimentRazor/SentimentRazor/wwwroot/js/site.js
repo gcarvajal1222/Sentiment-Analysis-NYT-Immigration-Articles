@@ -29,8 +29,11 @@ function updateSentiment() {
             else if (sentiment.startsWith("Sentiment: negative")) {
                 updateMarker(100.0, sentiment);
             }
+            else if (sentiment.startsWith("Sentiment: neutral")) {
+                updateMarker(100.0, sentiment);
+            }
             else {
-                updateMarker(100.0, "Neutral");
+                updateMarker(100.0, "Sentiment");
             }
             
 
