@@ -15,7 +15,13 @@
                 <div id="markerPosition" style="left: 45%;">
                     <label  id="markerValue">Sentiment</label>
                 </div>
-                
+                <div>
+                    <input asp-for="SentimentResult.Prediction"
+                           id="inputPrediction"
+                           type="hidden"
+                           class="Disable"
+                           value="" />
+                </div>
                 <input type="submit" value="Save Prediction" id="GetPrediction" onclick="document.getElementById('inputPrediction').value = getPrediction()"; />
             </div>
         </div>

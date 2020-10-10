@@ -35,7 +35,7 @@ namespace SentimentRazor.Pages
             _db.SavePrediction.Remove(book);
             await _db.SaveChangesAsync();
 
-            return RedirectToPage("Index");
+            return RedirectToPage("SentimentDb");
         }
 
     }
