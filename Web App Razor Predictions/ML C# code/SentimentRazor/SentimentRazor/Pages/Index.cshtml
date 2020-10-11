@@ -13,16 +13,23 @@
 
             <div class="marker">
                 <div id="markerPosition" style="left: 45%;">
-                    <label  id="markerValue">Sentiment</label>
+                    <label id="markerValue">Sentiment</label>
                 </div>
                 <div>
-                    <input asp-for="SentimentResult.Prediction"
-                           id="inputPrediction"
+                    <input asp-for="SentimentResult.SentimentPrediction"
+                           id="inputPredictionSentiment"
                            type="hidden"
                            class="Disable"
                            value="" />
                 </div>
-                <input type="submit" value="Save Prediction" id="GetPrediction" onclick="document.getElementById('inputPrediction').value = getPrediction()"; />
+                <div>
+                    <input asp-for="SentimentResult.ConfidenceScore"
+                           id="inputConfidenceScore"
+                           type="hidden"
+                           class="Disable"
+                           value="" />
+                </div>
+                <input type="submit" value="Save Prediction" id="GetPrediction" onclick="getPredictionSentiment()" ; />
             </div>
         </div>
     </form>

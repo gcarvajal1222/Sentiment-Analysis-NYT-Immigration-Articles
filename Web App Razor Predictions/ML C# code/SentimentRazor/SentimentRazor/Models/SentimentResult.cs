@@ -16,6 +16,12 @@ namespace SentimentRazor.Models
 
         public string Text { get; set; }
 
-        public string Prediction { get; set; }
+        public string SentimentPrediction { get; set; }
+
+        public string ConfidenceScore { get; set; }
+
+        public string ActualSentiment { get; set; }
+
+
     }
 }

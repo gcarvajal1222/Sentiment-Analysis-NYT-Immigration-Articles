@@ -20,7 +20,15 @@
                         </th>
                         <th>
                             @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
-                            <label asp-for="SentimentResults.FirstOrDefault().Prediction"></label>
+                            <label asp-for="SentimentResults.FirstOrDefault().SentimentPrediction"></label>
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
+                            <label asp-for="SentimentResults.FirstOrDefault().ConfidenceScore"></label>
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
+                            <label asp-for="SentimentResults.FirstOrDefault().ActualSentiment"></label>
                         </th>
                         <th>
 
@@ -29,24 +37,30 @@
 
                     @foreach (var item in Model.SentimentResults)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(m => item.Text)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => item.Prediction)
-                            </td>
-                            <td>
-                                <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
-                                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
-                            </td>
-                        </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.SentimentPrediction)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.ConfidenceScore)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.ActualSentiment)
+                    </td>
+                    <td>
+                        <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
+                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                    </td>
+                </tr>
                     }
                 </table>
             }
             else
             {
-                <p>No books available.</p>
+                <p>No Predictions available.</p>
             }
         </form>
     </div>
