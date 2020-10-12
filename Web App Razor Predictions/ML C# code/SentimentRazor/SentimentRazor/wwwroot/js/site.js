@@ -60,21 +60,22 @@ function getConfidenceScore() {
 
 }
 
-(function getPredictionSentiment() {
+function getPredictionSentiment() {
     var prediction = $("#markerValue").text();// why is this different than val()
 
     if (prediction.startsWith("Sentiment: positive")) {
         var positivePred = prediction.substring(11, 19); //getting just the sentiment prediction
-        //var confidenceScore = prediction.substring(19, -1); //substring of confidenceScore;
-        console.log(positivePred);
-        //console.log(confidenceScore);
+        var confidenceScore = prediction.substring(21, -1); //substring of confidenceScore;
         var InputPredictionSentiment = document.getElementById('inputPredictionSentiment');
         InputPredictionSentiment.innerHTML = positivePred; 
         //document.getElementById('inputConfidenceScore') = confidenceScore; 
+        return (console.log(positivePred, confidenceScore));
     }
     
 
 
-})
+}
 
 $("#Message").on('change input paste', updateSentiment)
+
+getPredictionSentiment();
