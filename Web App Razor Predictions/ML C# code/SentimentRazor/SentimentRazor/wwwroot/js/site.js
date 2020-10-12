@@ -53,10 +53,18 @@ function updateSentiment() {
 function getConfidenceScore() {
     var prediction = $("#markerValue").text();// why is this different than val()
     if (prediction.startsWith("Sentiment: positive")) {
-        var confidenceScore = prediction.substring(20, -1); //substring of confidenceScore;
-        console.log(confidenceScore);
-        document.getElementById('inputConfidenceScore') = confidenceScore; 
+        var confidenceScorePositive = prediction.substring(38, 42); //substring of confidenceScore;
+        return confidenceScorePositive
     }
+    if (prediction.startsWith("Sentiment: negative")) {
+        var confidenceScoreNegative = prediction.substring(38, 42); //substring of confidenceScore;
+        return confidenceScoreNegative
+    }
+    if (prediction.startsWith("Sentiment: neutral")) {
+        var confidenceScoreNeutral = prediction.substring(37, 41); //substring of confidenceScore;
+        return confidenceScoreNeutral
+    }
+    
 
 }
 
@@ -65,11 +73,15 @@ function getPredictionSentiment() {
 
     if (prediction.startsWith("Sentiment: positive")) {
         var positivePred = prediction.substring(11, 19); //getting just the sentiment prediction
-        var confidenceScore = prediction.substring(21, -1); //substring of confidenceScore;
-        var InputPredictionSentiment = document.getElementById('inputPredictionSentiment');
-        InputPredictionSentiment.innerHTML = positivePred; 
-        //document.getElementById('inputConfidenceScore') = confidenceScore; 
-        return (console.log(positivePred, confidenceScore));
+        return positivePred
+    }
+    if (prediction.startsWith("Sentiment: negative")) {
+        var NegativePred = prediction.substring(11, 19); //getting just the sentiment prediction
+        return NegativePred;
+    }
+    if (prediction.startsWith("Sentiment: neutral")) {
+        var neutralPred = prediction.substring(11, 18); //getting just the sentiment prediction
+        return neutralPred
     }
     
 
@@ -77,5 +89,3 @@ function getPredictionSentiment() {
 }
 
 $("#Message").on('change input paste', updateSentiment)
-
-getPredictionSentiment();

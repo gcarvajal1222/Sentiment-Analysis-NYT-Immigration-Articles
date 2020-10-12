@@ -44,14 +44,20 @@ namespace SentimentRazor.Pages
             }
         }
 
-            public IActionResult OnGetAnalyzeSentiment([FromQuery] string text)
+        private static int RoundValueToNext100(double value)
+        {
+            return (int)(Math.Ceiling(value / 100) * 100);
+        }
+
+        public IActionResult OnGetAnalyzeSentiment([FromQuery] string text)
         {
             if (String.IsNullOrEmpty(text)) return Content("Sentiment");
             var input = new ModelInput { CleanText = text };
             var prediction = _predictionEnginePool.Predict(input);
             var sentiment = prediction.Prediction;
             var confScore = prediction.Score[0];
-            return Content("Sentiment: " + sentiment + " Confidence Score: " + confScore);
+            var roundedConfScore=String.Format("{0:0.00}", confScore);
+            return Content("Sentiment: " + sentiment + " Confidence Score: " + roundedConfScore.ToString());
         }
     }
 }

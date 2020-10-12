@@ -18,18 +18,18 @@
                 <div>
                     <input asp-for="SentimentResult.SentimentPrediction"
                            id="inputPredictionSentiment"
-                           type="text"
+                           type="hidden"
                            class="Disable"
                            value="" />
                 </div>
                 <div>
                     <input asp-for="SentimentResult.ConfidenceScore"
                            id="inputConfidenceScore"
-                           type="text"
+                           type="hidden"
                            class="Disable"
                            value="" />
                 </div>
-                <input type="submit" value="Save Prediction" id="GetPrediction" onclick="getConfidenceScore()" ; />
+                <input type="submit" value="Save Prediction" id="GetPrediction" onclick="document.getElementById('inputPredictionSentiment').value = getPredictionSentiment(); document.getElementById('inputConfidenceScore').value = getConfidenceScore()"; />
             </div>
         </div>
     </form>
