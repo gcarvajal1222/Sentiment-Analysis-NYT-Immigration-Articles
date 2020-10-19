@@ -7,7 +7,7 @@
 function getSentiment(userInput) {
     return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
         .then((response) => {
-            return response.text();
+            return response.text(); // this is a promise of type text
         })
 }
 
@@ -21,7 +21,7 @@ function updateSentiment() {
     var userInput = $("#Message").val();
 
     getSentiment(userInput)
-        .then((sentiment) => {
+        .then((sentiment) => { // Convert the promise type text to use it in the if-else statements
 
             if (sentiment.startsWith("Sentiment: positive")) {
                 updateMarker(100.0, sentiment);
