@@ -20,10 +20,10 @@ namespace SentimentRazor.Pages
 
         public IEnumerable<SentimentResult> SentimentResults { get; set; }
 
-        public async Task OnGet()
-        {
-            SentimentResults = await _db.SavePrediction.ToListAsync();
-        }
+        //public async Task OnGet()
+        //{
+        //    SentimentResults = await _db.SavePrediction.ToListAsync();
+        //}
 
         public async Task<IActionResult> OnPostDelete(int id)
         {
