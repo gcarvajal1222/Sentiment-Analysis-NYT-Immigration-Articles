@@ -29,9 +29,19 @@
                            class="Disable"
                            value="" />
                 </div>
-                <input type="submit" value="Save Prediction" id="GetPrediction" 
+                <input type="submit" value="Save Prediction" id="GetPrediction"
                        onclick="document.getElementById('inputPredictionSentiment').value = getPredictionSentiment();
-                                document.getElementById('inputConfidenceScore').value = getConfidenceScore()"; />
+                                document.getElementById('inputConfidenceScore').value = getConfidenceScore();
+                                document.getElementById('inputActualSentiment').value" />
+
+            </div>
+
+            <div>
+                <h4>Actual Sentiment</h4>
+                <input asp-for="SentimentResult.ActualSentiment"
+                       id="inputActualSentiment"
+                       class="Disable"
+                       value="" />
             </div>
         </div>
     </form>
