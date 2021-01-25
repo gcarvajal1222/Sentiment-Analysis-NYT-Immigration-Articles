@@ -6,10 +6,14 @@
     <form method="post">
         <h2>Live Sentiment</h2>
 
+        <div>
+            <button>Get Article</button>
+        </div>
+
         <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Type any text like a short review"></textarea></p>
 
         <div class="sentiment">
-            <h4>Your sentiment is...</h4>
+            <h4>Predicted Sentiment is...</h4>
 
             <div class="marker">
                 <div id="markerPosition" style="left: 45%;">
@@ -29,19 +33,20 @@
                            class="Disable"
                            value="" />
                 </div>
-                <input type="submit" value="Save Prediction" id="GetPrediction"
-                       onclick="document.getElementById('inputPredictionSentiment').value = getPredictionSentiment();
-                                document.getElementById('inputConfidenceScore').value = getConfidenceScore();
-                                document.getElementById('inputActualSentiment').value" />
 
-            </div>
-
-            <div>
                 <h4>Actual Sentiment</h4>
                 <input asp-for="SentimentResult.ActualSentiment"
                        id="inputActualSentiment"
                        class="Disable"
                        value="" />
+
+            </div>
+
+            <div>
+                <input type="submit" value="Save Prediction" id="GetPrediction"
+                       onclick="document.getElementById('inputPredictionSentiment').value = getPredictionSentiment();
+                                document.getElementById('inputConfidenceScore').value = getConfidenceScore();
+                                document.getElementById('inputActualSentiment').value" />
             </div>
         </div>
     </form>
