@@ -15,19 +15,6 @@ function getArticle() {
         })
 }
 
-        //}).then(function (ReturnResponse) { => {
-        //    console.log(JSON.stringify(ReturnResponse));
-        //    return JSON.stringify(ReturnResponse)
-
-//function ReturnArticle() {
-//    getArticle().then((responseArticle) => {
-//        console.log(JSON.stringify(responseArticle));
-//        return responseArticle;
-
-//    })
-//}
-
-
 
 function getSentiment(userInput) {
     return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
@@ -113,4 +100,4 @@ function getPredictionSentiment() {
 
 }
 
-$("#Message").on('change input paste', updateSentiment)
+$("#Message").on('click', updateSentiment)

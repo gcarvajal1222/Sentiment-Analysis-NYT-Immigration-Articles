@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace SentimentRazor.Models
 {
-    public class response
+    public class ResponseAPI
     {
+        [JsonProperty("response")]
+        public Response response { get; set; }
+    }
 
+    public class Response
+    {
         [JsonProperty("docs")]
         public List<Docs> docs;
     }
@@ -17,5 +22,4 @@ namespace SentimentRazor.Models
     {
         public string lead_paragraph;
     }
-
 }

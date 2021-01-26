@@ -85,7 +85,7 @@ namespace SentimentRazor.Pages
             var client = _httpclientFactory.CreateClient();
             resp = await client.SendAsync(req);
             var jsonString = await resp.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<myItem>(jsonString);
+            var result = JsonConvert.DeserializeObject<ResponseAPI>(jsonString);
             var response1= result.response.docs[0].lead_paragraph;
 
             return Content(response1.ToString());
@@ -96,23 +96,5 @@ namespace SentimentRazor.Pages
         //_httpclient.DefaultRequestHeaders.Accept.Clear();
         //_httpclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
-    }
-
-public class myItem
-{
-    [JsonProperty("response")]
-    public Response response { get; set; }
-}
-
-public class Response
-{
-    [JsonProperty("docs")]
-    public List<Docs> docs;
-}
-
-public class Docs
-{
-    public string lead_paragraph;
-}
-
+  }
 
