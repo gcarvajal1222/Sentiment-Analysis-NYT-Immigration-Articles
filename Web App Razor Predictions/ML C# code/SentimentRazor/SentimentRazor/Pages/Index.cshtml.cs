@@ -70,7 +70,7 @@ namespace SentimentRazor.Pages
 
             HttpResponseMessage resp;
 
-            var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigration=&api-key=");
+            var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigration=&api-key=a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5");
             //req.Headers.Add("Accept", "application/x-www-form-urlencoded");
             //req.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 
@@ -86,7 +86,7 @@ namespace SentimentRazor.Pages
             resp = await client.SendAsync(req);
             var jsonString = await resp.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<myItem>(jsonString);
-            var response1= result;
+            var response1= result.response.docs[0].lead_paragraph;
 
             return Content(response1.ToString());
         }

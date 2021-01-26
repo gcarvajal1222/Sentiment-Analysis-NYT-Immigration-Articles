@@ -6,12 +6,28 @@
 
 
 function getArticle() {
-    return fetch('Index?handler=Articles')
+    fetch('Index?handler=Articles')
         .then((response) => {
-        return response.text();
-    })
-
+            return response.text();
+        }).then((ReturnResponse) => {
+            console.log(JSON.stringify(ReturnResponse));
+            document.getElementById('Message').value = ReturnResponse;
+        })
 }
+
+        //}).then(function (ReturnResponse) { => {
+        //    console.log(JSON.stringify(ReturnResponse));
+        //    return JSON.stringify(ReturnResponse)
+
+//function ReturnArticle() {
+//    getArticle().then((responseArticle) => {
+//        console.log(JSON.stringify(responseArticle));
+//        return responseArticle;
+
+//    })
+//}
+
+
 
 function getSentiment(userInput) {
     return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)

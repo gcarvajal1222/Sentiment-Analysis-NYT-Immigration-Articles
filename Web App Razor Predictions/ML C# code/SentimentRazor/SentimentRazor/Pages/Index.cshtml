@@ -8,7 +8,7 @@
 
         <div>
             <input type="button" value="Get Article" 
-                   onclick="document.getElementById('Message').value = getArticle()" />
+                   onclick="getArticle()" /> 
         </div>
 
         <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Type any text like a short review"></textarea></p>
