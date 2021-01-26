@@ -4,6 +4,15 @@
 // Write your Javascript code.
 /* Style for sentiment display */
 
+
+function getArticle() {
+    return fetch('Index?handler=Articles')
+        .then((response) => {
+        return response.text();
+    })
+
+}
+
 function getSentiment(userInput) {
     return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
         .then((response) => {

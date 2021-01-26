@@ -12,14 +12,13 @@ using System.IO;
 using Microsoft.Extensions.ML;
 using SentimentRazorML.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 
 namespace SentimentRazor
 {
     public class Startup
     {
         private readonly string _modelPath;
-
-
 
         public Startup(IConfiguration configuration)
         {
@@ -36,6 +35,7 @@ namespace SentimentRazor
             services.AddPredictionEnginePool<ModelInput, ModelOutput>()
         .FromFile(_modelPath);
             services.AddRazorPages();
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
