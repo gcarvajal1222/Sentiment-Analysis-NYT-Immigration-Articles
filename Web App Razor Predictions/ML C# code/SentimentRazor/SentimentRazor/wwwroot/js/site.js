@@ -14,7 +14,8 @@ function getSentiment(userInput) {
 
 function getArticle() {
     var apikeyInput = $('#apikeyid').val();
-    fetch(`Index?handler=Articles&apiKey=${apikeyInput}`)
+    var queryInput = $('#queryid').val();
+    fetch(`Index?handler=Articles&query=${queryInput}&apiKey=${apikeyInput}`)
         .then((response) => {
             return response.text();
         }).then((ReturnResponse) => {

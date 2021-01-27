@@ -68,14 +68,14 @@ namespace SentimentRazor.Pages
         //[BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
         //public string apikey { get; }
 
-        public async Task<IActionResult> OnGetArticles([FromQuery] string apiKey)
+        public async Task<IActionResult> OnGetArticles([FromQuery] string query,[FromQuery] string apiKey)
         {
 
             if (ModelState.IsValid) //checker if the requiered properties are being added in the front end
             {
                 HttpResponseMessage resp;
 
-                var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigration=&api-key=" + apiKey);
+                var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + query + "=&api-key=" + apiKey);
                 //req.Headers.Add("Accept", "application/x-www-form-urlencoded");
                 //req.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 
