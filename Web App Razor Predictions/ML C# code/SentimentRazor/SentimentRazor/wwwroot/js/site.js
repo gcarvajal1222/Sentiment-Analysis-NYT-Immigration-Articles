@@ -4,9 +4,17 @@
 // Write your Javascript code.
 /* Style for sentiment display */
 
+function getSentiment(userInput) {
+    return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
+        .then((response) => {
+            return response.text(); // this is a promise of type text
+        })
+}
+
 
 function getArticle() {
-    fetch('Index?handler=Articles')
+    var apikeyInput = $('#apikeyid').val();
+    fetch(`Index?handler=Articles&apiKey=${apikeyInput}`)
         .then((response) => {
             return response.text();
         }).then((ReturnResponse) => {
@@ -15,13 +23,6 @@ function getArticle() {
         })
 }
 
-
-function getSentiment(userInput) {
-    return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
-        .then((response) => {
-            return response.text(); // this is a promise of type text
-        })
-}
 
 function updateMarker(markerPosition, sentiment) {
     $("#markerPosition").attr("style", `left:${markerPosition}%`);
@@ -48,17 +49,6 @@ function updateSentiment() {
                 updateMarker(100.0, "Sentiment");
             }
             
-
-            //switch (sentiment) {
-            //    case "positive":
-            //        updateMarker(100.0, sentiment);
-            //        break;
-            //    case "negative":
-            //        updateMarker(0.0, sentiment);
-            //        break;
-            //    default:
-            //        updateMarker(45.0, "Neutral");
-            //}
         });
 }
 
@@ -101,3 +91,4 @@ function getPredictionSentiment() {
 }
 
 $("#Message").on('click', updateSentiment)
+//$('#apikeyid').on('change input paste', )

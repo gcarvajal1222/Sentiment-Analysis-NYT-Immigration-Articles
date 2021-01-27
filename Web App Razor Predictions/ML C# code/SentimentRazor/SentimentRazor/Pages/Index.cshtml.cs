@@ -65,36 +65,47 @@ namespace SentimentRazor.Pages
             return Content("Sentiment: " + sentiment + " Confidence Score: " + roundedConfScore.ToString());
         }
 
-        public async Task<IActionResult> OnGetArticles()
+        //[BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
+        //public string apikey { get; }
+
+        public async Task<IActionResult> OnGetArticles([FromQuery] string apiKey)
         {
 
-            HttpResponseMessage resp;
+            if (ModelState.IsValid) //checker if the requiered properties are being added in the front end
+            {
+                HttpResponseMessage resp;
 
-            var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigration=&api-key=a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5");
-            //req.Headers.Add("Accept", "application/x-www-form-urlencoded");
-            //req.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+                var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=immigration=&api-key=" + apiKey);
+                //req.Headers.Add("Accept", "application/x-www-form-urlencoded");
+                //req.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 
-            // This is the important part:
-        //    req.Content = new FormUrlEncodedContent(new Dictionary<string, string>
-        //{
-        //    { "q", "immigration" },
-        //    { "api-key", "a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5" }
-        //   });
+                // This is the important part:
+                //    req.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                //{
+                //    { "q", "immigration" },
+                //    { "api-key", "a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5" }
+                //   });
 
 
-            var client = _httpclientFactory.CreateClient();
-            resp = await client.SendAsync(req);
-            var jsonString = await resp.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<ResponseAPI>(jsonString);
-            var response1= result.response.docs[0].lead_paragraph;
+                var client = _httpclientFactory.CreateClient();
+                resp = await client.SendAsync(req);
+                var jsonString = await resp.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<ResponseAPI>(jsonString);
+                var response1 = result.response.docs[0].lead_paragraph;
 
-            return Content(response1.ToString());
+                return Content(response1.ToString());
+
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                Console.WriteLine(errors);
+                return Page();
+
+            }
         }
 
 
-        //_httpclient.BaseAddress = new Uri("");
-        //_httpclient.DefaultRequestHeaders.Accept.Clear();
-        //_httpclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
     }
   }
 
