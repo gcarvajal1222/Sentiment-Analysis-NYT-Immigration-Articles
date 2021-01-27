@@ -4,11 +4,11 @@
 
 <div class="text-center">
     <form method="post">
-        <h2>Live Sentiment</h2>
+        <h2>Sentiment Analysis on NYT times Articles</h2>
 
-        <div>
-            <input id="apikeyid" placeholder="Enter you api key here" /> 
-            <input id="queryid" placeholder="Enter your query word here" />
+        <div class="apisparameters"> 
+            <input id="apikeyid" placeholder="API key" width="15" /> 
+            <input id="queryid" placeholder="Search by query (e.g immigration)" />
         </div>
 
         <div>
@@ -16,7 +16,7 @@
                    onclick="getArticle()" /> 
         </div>
 
-        <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Type any text like a short review"></textarea></p>
+        <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Display of lead_paragraph from NYT times API"></textarea></p>
 
         <div class="sentiment">
             <h4>Predicted Sentiment is...</h4>
