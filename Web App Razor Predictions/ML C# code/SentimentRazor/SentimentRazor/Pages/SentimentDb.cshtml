@@ -52,7 +52,7 @@
                     </td>
                     <td>
                         <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
-                        <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Edit</a>
+                        <a asp-page-handler="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Update</a>
                     </td>
                 </tr>
                     }
@@ -63,5 +63,6 @@
                 <p>No Predictions available.</p>
             }
         </form>
+    </div>
     </div>
 

@@ -8,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ML;
 using SentimentRazor.Models;
 using SentimentRazorML.Model;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace SentimentRazor.Pages
 {
@@ -16,11 +19,13 @@ namespace SentimentRazor.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly PredictionEnginePool<ModelInput, ModelOutput> _predictionEnginePool;
         private readonly ApplicationDbContext _db;
+        private readonly IHttpClientFactory _httpclientFactory;
 
-        public IndexModel(PredictionEnginePool<ModelInput, ModelOutput> predictionEnginePool, ApplicationDbContext db)
+        public IndexModel(PredictionEnginePool<ModelInput, ModelOutput> predictionEnginePool, ApplicationDbContext db, IHttpClientFactory httpclientfactory)
         {
             _predictionEnginePool = predictionEnginePool;
             _db = db;
+            _httpclientFactory = httpclientfactory;
         }
 
         [BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
@@ -59,5 +64,39 @@ namespace SentimentRazor.Pages
             var roundedConfScore=String.Format("{0:0.00}", confScore);
             return Content("Sentiment: " + sentiment + " Confidence Score: " + roundedConfScore.ToString());
         }
+
+        //[BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
+        //public string apikey { get; }
+
+        public async Task<IActionResult> OnGetArticles([FromQuery] string query,[FromQuery] string apiKey)
+        {
+
+            if (ModelState.IsValid) //checker if the requiered properties are being added in the front end
+            {
+                HttpResponseMessage resp;
+
+                var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + query + "=&api-key=" + apiKey);
+
+
+                var client = _httpclientFactory.CreateClient();
+                resp = await client.SendAsync(req);
+                var jsonString = await resp.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<ResponseAPI>(jsonString);
+                var response1 = result.response.docs[0].lead_paragraph;
+
+                return Content(response1.ToString());
+
+            }
+            else
+            {
+                var errors = ModelState.Values.SelectMany(v => v.Errors);
+                Console.WriteLine(errors);
+                return Page();
+
+            }
+        }
+
+
     }
-}
+  }
+

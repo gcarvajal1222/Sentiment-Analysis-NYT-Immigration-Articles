@@ -7,9 +7,23 @@
 function getSentiment(userInput) {
     return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
         .then((response) => {
-            return response.text();
+            return response.text(); // this is a promise of type text
         })
 }
+
+
+function getArticle() {
+    var apikeyInput = $('#apikeyid').val();
+    var queryInput = $('#queryid').val();
+    fetch(`Index?handler=Articles&query=${queryInput}&apiKey=${apikeyInput}`)
+        .then((response) => {
+            return response.text();
+        }).then((ReturnResponse) => {
+            console.log(JSON.stringify(ReturnResponse));
+            document.getElementById('Message').value = ReturnResponse;
+        })
+}
+
 
 function updateMarker(markerPosition, sentiment) {
     $("#markerPosition").attr("style", `left:${markerPosition}%`);
@@ -21,7 +35,7 @@ function updateSentiment() {
     var userInput = $("#Message").val();
 
     getSentiment(userInput)
-        .then((sentiment) => {
+        .then((sentiment) => { // Convert the promise type text to use it in the if-else statements
 
             if (sentiment.startsWith("Sentiment: positive")) {
                 updateMarker(100.0, sentiment);
@@ -36,17 +50,6 @@ function updateSentiment() {
                 updateMarker(100.0, "Sentiment");
             }
             
-
-            //switch (sentiment) {
-            //    case "positive":
-            //        updateMarker(100.0, sentiment);
-            //        break;
-            //    case "negative":
-            //        updateMarker(0.0, sentiment);
-            //        break;
-            //    default:
-            //        updateMarker(45.0, "Neutral");
-            //}
         });
 }
 
@@ -88,4 +91,5 @@ function getPredictionSentiment() {
 
 }
 
-$("#Message").on('change input paste', updateSentiment)
+$("#Message").on('click', updateSentiment)
+//$('#apikeyid').on('change input paste', )
