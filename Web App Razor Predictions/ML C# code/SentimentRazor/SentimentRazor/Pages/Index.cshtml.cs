@@ -76,15 +76,6 @@ namespace SentimentRazor.Pages
                 HttpResponseMessage resp;
 
                 var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + query + "=&api-key=" + apiKey);
-                //req.Headers.Add("Accept", "application/x-www-form-urlencoded");
-                //req.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-
-                // This is the important part:
-                //    req.Content = new FormUrlEncodedContent(new Dictionary<string, string>
-                //{
-                //    { "q", "immigration" },
-                //    { "api-key", "a0HA3uBISDkGyvUGR3FeoAGybtDVPPM5" }
-                //   });
 
 
                 var client = _httpclientFactory.CreateClient();
