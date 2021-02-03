@@ -35,6 +35,7 @@ namespace SentimentRazor
             services.AddPredictionEnginePool<ModelInput, ModelOutput>()
         .FromFile(_modelPath);
             services.AddRazorPages();
+            services.AddControllersWithViews(); // adding the api calls
             services.AddHttpClient();
         }
 
@@ -62,6 +63,7 @@ namespace SentimentRazor
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
 
 
