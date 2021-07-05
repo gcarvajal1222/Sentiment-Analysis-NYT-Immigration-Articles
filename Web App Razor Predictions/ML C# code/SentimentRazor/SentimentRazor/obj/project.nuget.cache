@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "osOxh8OllCgroWM9EDU6Hq6Pww+iPkMJPtube9eGIMypJHj1dik9j28pFetRvCfvnnBl4VPP7oH01yvl/RWe7A==",
+  "dgSpecHash": "Gk8wUcf1TZi9lJcFjkY0xmHYHz2lYFt8BLFvcHRcsVP08bP/toCzmJJ+yRjGSr2FMlQ6uQ0wuHdgcmtx4sfAlQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gabri\\OneDrive\\Documents\\Github\\Sentiment-Analysis-NYT-Immigration-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazor\\SentimentRazor.csproj",
   "expectedPackageFiles": [
@@ -85,6 +85,7 @@
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\gabri\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.13\\microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\3.1.4\\microsoft.visualstudio.web.codegeneration.3.1.4.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\3.1.4\\microsoft.visualstudio.web.codegeneration.contracts.3.1.4.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\3.1.4\\microsoft.visualstudio.web.codegeneration.core.3.1.4.nupkg.sha512",

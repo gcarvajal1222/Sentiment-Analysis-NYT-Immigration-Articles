@@ -36,6 +36,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.8",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.8",
           "Microsoft.Extensions.ML": "1.5.1",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.13",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
           "SentimentRazorML.Model": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery.Reference": "3.1.0.0",
@@ -1372,6 +1373,7 @@
       },
       "Microsoft.NETCore.Platforms/2.1.2": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.13": {},
       "Microsoft.VisualStudio.Web.CodeGeneration/3.1.4": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "3.1.8",
@@ -4860,6 +4862,13 @@
       "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HWRH5pClal37WMKb0kV2JtnNKUEyQk8kJDdBz0M0fn9hKeU2KW8wdxkxeBNaumGQzHibZqSRofkeeayfpsMaKA==",
+      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.13",
+      "hashPath": "microsoft.visualstudio.azure.containers.tools.targets.1.10.13.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/3.1.4": {
       "type": "package",
