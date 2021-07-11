@@ -89,7 +89,7 @@ namespace SentimentRazor.Pages
                 var response1 = result.response.docs[0].lead_paragraph;
 
 
-                var obj = new JsonBodyResponse { ArticlesCount = countResponse, response = response1 };
+                var obj = new JsonBodyResponse { ArticlesCounts = countResponse.ToString(), response = response1 };
 
                 return new JsonResult (obj);
 
@@ -105,7 +105,7 @@ namespace SentimentRazor.Pages
 
         public class JsonBodyResponse
         {
-            public int ArticlesCount { get; set; }
+            public string ArticlesCounts { get; set; }
             public string response { get; set; }
         }
 

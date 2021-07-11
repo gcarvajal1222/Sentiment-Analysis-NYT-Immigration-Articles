@@ -26,13 +26,12 @@ function getArticle() {
     var endDate = "20200101";
     fetch(`Index?handler=Articles&query=${queryInput}&apiKey=${apikeyInput}&startDate=${startDate}&endDate=${endDate}`)
         .then((response) => {
-            //console.log("text", response.text());
-            //console.log("json" , response.json());
-            //console.log(response);
-            return response.text();
+            return response.json();
         }).then((ReturnResponse) => {
             console.log(JSON.stringify(ReturnResponse));
-            document.getElementById('Message').value = ReturnResponse;
+            document.getElementById('Message').value = ReturnResponse.response;
+            document.getElementById('ArticleCounts').value = ReturnResponse.articlesCounts;
+
         })
 }
 
