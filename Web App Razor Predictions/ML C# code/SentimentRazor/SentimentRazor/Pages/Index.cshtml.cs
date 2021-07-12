@@ -85,7 +85,8 @@ namespace SentimentRazor.Pages
                 resp = await client.SendAsync(req);
                 var jsonString = await resp.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<ResponseAPI>(jsonString);
-                var countResponse = result.response.docs.Count();
+                //var totalResponse = result.response.meta.hits
+                var countResponse = result.response.meta.hits;
                 var response1 = result.response.docs[0].lead_paragraph;
 
 

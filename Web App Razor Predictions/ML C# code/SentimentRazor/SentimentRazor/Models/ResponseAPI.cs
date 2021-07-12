@@ -14,6 +14,10 @@ namespace SentimentRazor.Models
 
     public class Response
     {
+        [JsonProperty("meta")]
+        public Meta meta { get; set; }
+
+
         [JsonProperty("docs")]
         public List<Docs> docs;
     }
@@ -21,5 +25,10 @@ namespace SentimentRazor.Models
     public class Docs
     {
         public string lead_paragraph;
+    }
+
+    public class Meta
+    {
+        public int hits;
     }
 }
