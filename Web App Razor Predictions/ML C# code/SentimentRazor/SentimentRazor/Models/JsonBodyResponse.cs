@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace SentimentRazor.Models
 {
-    public class Class
+    public class JsonBodyResponse
     {
+        public string ArticlesCounts { get; set; }
+        public string response { get; set; }
     }
 }

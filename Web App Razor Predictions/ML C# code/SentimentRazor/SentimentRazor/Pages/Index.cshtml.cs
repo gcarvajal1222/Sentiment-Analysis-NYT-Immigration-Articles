@@ -104,12 +104,6 @@ namespace SentimentRazor.Pages
             }
         }
 
-        public class JsonBodyResponse
-        {
-            public string ArticlesCounts { get; set; }
-            public string response { get; set; }
-        }
-
     }
 }
 
