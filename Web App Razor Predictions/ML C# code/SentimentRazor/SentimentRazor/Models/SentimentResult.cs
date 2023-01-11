@@ -22,9 +22,7 @@ namespace SentimentRazor.Models
 
         public string ActualSentiment { get; set; }
 
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndTime { get; set; }
+        public DateTime? SavedDate { get; set; } = DateTime.Now;
 
 
     }

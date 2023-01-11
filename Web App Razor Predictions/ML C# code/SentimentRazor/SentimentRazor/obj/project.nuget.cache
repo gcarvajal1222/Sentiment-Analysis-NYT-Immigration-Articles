@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Gk8wUcf1TZi9lJcFjkY0xmHYHz2lYFt8BLFvcHRcsVP08bP/toCzmJJ+yRjGSr2FMlQ6uQ0wuHdgcmtx4sfAlQ==",
+  "dgSpecHash": "4YK/lsql76f7ajVZdu9VEytQAskCKPDu5J82HMlSJRtyWV29xG9PL1VuzNrJICrQltw4/sjlqs5mCngWmlsunQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gabri\\OneDrive\\Documents\\Github\\Sentiment-Analysis-NYT-Immigration-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazor\\SentimentRazor.csproj",
   "expectedPackageFiles": [
@@ -210,7 +210,8 @@
     "C:\\Users\\gabri\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\gabri\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\gabri\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\gabri\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.30\\microsoft.netcore.app.host.win-x64.3.1.30.nupkg.sha512"
   ],
   "logs": []
 }

@@ -22,11 +22,6 @@
         </div>
 
 
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.SentimentResult.StartDate, new { @Value = DateTime.Now, id = "datepicker" })
-            @Html.ValidationMessageFor(model => model.SentimentResult.StartDate)
-        </div>
-
         <p><textarea asp-for="SentimentResult.Text" id="Message" cols="45" placeholder="Display of lead_paragraph from NYT times API"></textarea></p>
 
         <div class="sentiment">
