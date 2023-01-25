@@ -8,6 +8,6 @@ namespace SentimentRazor.Models
     public class JsonBodyResponse
     {
         public string ArticlesCounts { get; set; }
-        public string response { get; set; }
+        public List<Docs> response { get; set; }
     }
 }
