@@ -8,6 +8,8 @@ using SentimentRazorML.Model;
 
 namespace SentimentRazorML.ConsoleApp
 {
+
+
     class Program
     {
         //Dataset to use for predictions 

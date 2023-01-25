@@ -32,9 +32,12 @@ namespace SentimentRazor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Models.ApplicationDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //connect to database
+
+
             services.AddPredictionEnginePool<ModelInput, ModelOutput>()
         .FromFile(_modelPath);
             services.AddRazorPages();
+            services.AddControllersWithViews(); // adding the api calls
             services.AddHttpClient();
         }
 
@@ -62,6 +65,7 @@ namespace SentimentRazor
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
 
 

@@ -11,6 +11,7 @@ using SentimentRazorML.Model;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace SentimentRazor.Pages
 {
@@ -30,6 +31,7 @@ namespace SentimentRazor.Pages
 
         [BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
         public SentimentResult SentimentResult { get; set; }
+
 
         public async Task<IActionResult> OnPost()
         {
@@ -68,23 +70,29 @@ namespace SentimentRazor.Pages
         //[BindProperty] // if we didnt have this line we would need to add a parameter to OnPost
         //public string apikey { get; }
 
-        public async Task<IActionResult> OnGetArticles([FromQuery] string query,[FromQuery] string apiKey)
+        public async Task<IActionResult> OnGetArticles([FromQuery] string query,[FromQuery] string apiKey,[FromQuery] string startDate, [FromQuery] string endDate )
         {
 
             if (ModelState.IsValid) //checker if the requiered properties are being added in the front end
             {
                 HttpResponseMessage resp;
 
-                var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + query + "=&api-key=" + apiKey);
+                var req = new HttpRequestMessage(HttpMethod.Get, "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + query + "=&api-key=" + apiKey + "&begin_date=" + startDate + "&end_date=" + endDate + "&sort =oldest");
 
+                
 
                 var client = _httpclientFactory.CreateClient();
                 resp = await client.SendAsync(req);
                 var jsonString = await resp.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<ResponseAPI>(jsonString);
+                //var totalResponse = result.response.meta.hits
+                var countResponse = result.response.meta.hits;
                 var response1 = result.response.docs[0].lead_paragraph;
 
-                return Content(response1.ToString());
+
+                var obj = new JsonBodyResponse { ArticlesCounts = countResponse.ToString(), response = response1 };
+
+                return new JsonResult (obj);
 
             }
             else
@@ -96,7 +104,6 @@ namespace SentimentRazor.Pages
             }
         }
 
-
     }
-  }
+}
 

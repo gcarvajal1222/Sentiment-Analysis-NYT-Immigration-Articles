@@ -114,4 +114,20 @@ body {
     color: gray;
 }
 
+.counts {
+    text-align: right;
+}
+
+.no-outline:focus {
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
 

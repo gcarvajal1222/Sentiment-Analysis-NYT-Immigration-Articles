@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NYT.Sentiment.API", "NYT.Sentiment.API\NYT.Sentiment.API.csproj", "{FED39758-98D4-4D64-BE39-DE57A54115D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF} = {24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}
+		{65D3B776-108F-413A-BF08-902B2EA59D01} = {65D3B776-108F-413A-BF08-902B2EA59D01}
+		{C9A6248D-234C-463D-8B3B-5F30B69A8C67} = {C9A6248D-234C-463D-8B3B-5F30B69A8C67}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NYT.Sentiment.Domain", "NYT.Sentiment.Domain\NYT.Sentiment.Domain.csproj", "{65D3B776-108F-413A-BF08-902B2EA59D01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NYT.Sentiment.Application", "NYT.Sentiment.Application\NYT.Sentiment.Application.csproj", "{C9A6248D-234C-463D-8B3B-5F30B69A8C67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF} = {24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}
+		{65D3B776-108F-413A-BF08-902B2EA59D01} = {65D3B776-108F-413A-BF08-902B2EA59D01}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NYT.Sentiment.Infrastrcture", "NYT.Sentiment.Infrastrcture\NYT.Sentiment.Infrastrcture.csproj", "{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{65D3B776-108F-413A-BF08-902B2EA59D01} = {65D3B776-108F-413A-BF08-902B2EA59D01}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FED39758-98D4-4D64-BE39-DE57A54115D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FED39758-98D4-4D64-BE39-DE57A54115D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FED39758-98D4-4D64-BE39-DE57A54115D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FED39758-98D4-4D64-BE39-DE57A54115D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D3B776-108F-413A-BF08-902B2EA59D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D3B776-108F-413A-BF08-902B2EA59D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D3B776-108F-413A-BF08-902B2EA59D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D3B776-108F-413A-BF08-902B2EA59D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A6248D-234C-463D-8B3B-5F30B69A8C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A6248D-234C-463D-8B3B-5F30B69A8C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A6248D-234C-463D-8B3B-5F30B69A8C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A6248D-234C-463D-8B3B-5F30B69A8C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F55B7E-57E8-4FEB-A7A2-25D21FCF25CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49DE6866-0088-4C56-B079-EB1DA0380C05}
+	EndGlobalSection
+EndGlobal

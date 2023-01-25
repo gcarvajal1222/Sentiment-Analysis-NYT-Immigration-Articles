@@ -8,61 +8,87 @@
     <div class="col-6">
         <h2 class="text-info">Predictions</h2>
     </div>
+</div>
 
-    <div class="col-12 border p-3 mt-3">
-        <form method="post">
-            @if (Model.SentimentResults.Count() > 0)
-            {
-                <table class="table table-striped border">
-                    <tr class="table-secondary">
-                        <th>
-                            <label asp-for="SentimentResults.FirstOrDefault().Text"></label>
-                        </th>
-                        <th>
-                            @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
-                            <label asp-for="SentimentResults.FirstOrDefault().SentimentPrediction"></label>
-                        </th>
-                        <th>
-                            @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
-                            <label asp-for="SentimentResults.FirstOrDefault().ConfidenceScore"></label>
-                        </th>
-                        <th>
-                            @*@Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)*@
-                            <label asp-for="SentimentResults.FirstOrDefault().ActualSentiment"></label>
-                        </th>
-                        <th>
 
-                        </th>
-                    </tr>
+<div class="col-12 border p-3 mt-3">
+    <form method="post">
+        @if (Model.SentimentResults.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        <label asp-for="SentimentResults.FirstOrDefault().Text"></label>
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(m=>m.SavePredictions.FirstOrDefault().Author)*@
+                        <label asp-for="SentimentResults.FirstOrDefault().SentimentPrediction"></label>
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(m=>m.SavePredictions.FirstOrDefault().Author)*@
+                        <label asp-for="SentimentResults.FirstOrDefault().ConfidenceScore"></label>
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(m=>m.SavePredictions.FirstOrDefault().Author)*@
+                        <label asp-for="SentimentResults.FirstOrDefault().ActualSentiment"></label>
+                    </th>
+                    <th>
 
-                    @foreach (var item in Model.SentimentResults)
-                    {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(m => item.Text)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => item.SentimentPrediction)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => item.ConfidenceScore)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => item.ActualSentiment)
-                    </td>
-                    <td>
-                        <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
-                        <a asp-page-handler="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Update</a>
-                    </td>
+                    </th>
                 </tr>
-                    }
-                </table>
-            }
-            else
-            {
-                <p>No Predictions available.</p>
-            }
-        </form>
-    </div>
-    </div>
+
+                @foreach (var item in Model.SentimentResults)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Text)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.SentimentPrediction)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.ConfidenceScore)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.ActualSentiment)
+                        </td>
+                        <td>
+                            <button asp-page-handler="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm">Delete</button>
+                            <a asp-page-handler="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm text-white">Update</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No Predictions available.</p>
+        }
+    </form>
+</div>
+
+
+<div class="col-12" style="text-align:center">
+    <br />
+    <span class="h3 text-info">OR</span>
+    <br /><br />
+</div>
+<div class="col-12 border p-3">
+
+    <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Text</th>
+                <th> SentimentPrediction</th>
+                <th> ConfidenceScore</th>
+                <th>ActualSentiment</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+@section Scripts{
+    <script src="~/js/SentimentResult.js"></script>
+}
 

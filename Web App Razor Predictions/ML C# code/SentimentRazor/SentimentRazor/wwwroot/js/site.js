@@ -11,16 +11,25 @@ function getSentiment(userInput) {
         })
 }
 
+function getSentiment(userInput) {
+    return fetch(`Index?handler=AnalyzeSentiment&text=${userInput}`)
+        .then((response) => {
+            return response.text(); // this is a promise of type text
+        })
+}
+
 
 function getArticle() {
     var apikeyInput = $('#apikeyid').val();
     var queryInput = $('#queryid').val();
-    fetch(`Index?handler=Articles&query=${queryInput}&apiKey=${apikeyInput}`)
+    fetch(`Index?handler=Articles&query=${queryInput}&apiKey=${apikeyInput}&startDate=${startDate}&endDate=${endDate}`)
         .then((response) => {
-            return response.text();
+            return response.json();
         }).then((ReturnResponse) => {
             console.log(JSON.stringify(ReturnResponse));
-            document.getElementById('Message').value = ReturnResponse;
+            document.getElementById('Message').value = ReturnResponse.response;
+            document.getElementById('ArticleCounts').value = ReturnResponse.articlesCounts;
+
         })
 }
 
@@ -93,3 +102,5 @@ function getPredictionSentiment() {
 
 $("#Message").on('click', updateSentiment)
 //$('#apikeyid').on('change input paste', )
+
+$(document).ready(function () { $("#datepicker").datepicker({}); });
