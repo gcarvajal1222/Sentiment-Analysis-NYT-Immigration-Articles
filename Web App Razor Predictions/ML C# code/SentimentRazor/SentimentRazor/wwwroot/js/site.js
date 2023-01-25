@@ -22,8 +22,6 @@ function getSentiment(userInput) {
 function getArticle() {
     var apikeyInput = $('#apikeyid').val();
     var queryInput = $('#queryid').val();
-    var startDate = "20181130";
-    var endDate = "20200101";
     fetch(`Index?handler=Articles&query=${queryInput}&apiKey=${apikeyInput}&startDate=${startDate}&endDate=${endDate}`)
         .then((response) => {
             return response.json();

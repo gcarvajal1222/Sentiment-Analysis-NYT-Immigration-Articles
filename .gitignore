@@ -364,3 +364,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 Web App Razor Predictions/ML C# code/SentimentRazor/SentimentRazor/appsettings.json
+Web App Razor Predictions/ML C\# code/SentimentRazor/.vs/SentimentRazor/v16/.suo
+Web App Razor Predictions/ML C\# code/SentimentRazor/.vs/SentimentRazor/v16/.suo
+*.dll
+*.targets
+*.dll

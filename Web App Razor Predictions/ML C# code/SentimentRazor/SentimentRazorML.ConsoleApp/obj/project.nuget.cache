@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MmmWzyVsPnw+IXpi70JNR9zWrBVCCDcFzdCDh2wWsNloj5fk952UeRXQaYr9QTNOvLKu5mby7KhPmmyOzT/rpw==",
+  "dgSpecHash": "B6IrCqowhdPX448ZSHnd1Xw8w0plpCrgpvucu74v4COu+BysMn+RoRjmoJPuFHOc7sxS2KfwaKFeRfQomy3sYw==",
   "success": true,
   "projectFilePath": "C:\\Users\\gabri\\OneDrive\\Documents\\Github\\Sentiment-Analysis-NYT-Immigration-Articles\\Web App Razor Predictions\\ML C# code\\SentimentRazor\\SentimentRazorML.ConsoleApp\\SentimentRazorML.ConsoleApp.csproj",
   "expectedPackageFiles": [
